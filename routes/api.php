@@ -21,16 +21,18 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::post('/auth/register', [AuthController::class, 'register']);
 
-Route::post('/auth/login', [AuthController::class, 'login'])->name('login');
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
+Route::prefix('auth')->group(function () {
+    Route::post('/login', [AuthController::class, 'login'])->name('login');
+    Route::post('/register', [AuthController::class, 'register']);
+    Route::middleware('auth:sanctum')->post('/logout', [AuthController::class, 'logout'])->name('logout');
 });
+/*Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
+    return $request->user();
+});*/
 Route::get('/options', [OptionController::class, 'getAllOptions'])->name('admin.options');
 Route::middleware('auth:sanctum')->group(function () {
-    Route::post('/auth/logout', [AuthController::class, 'logout'])->name('logout');
     Route::get('/religions', [ReligionController::class, 'getAllReligions'])->name('admin.religions');
     Route::get('/guilds', [GuildController::class, 'getAllGuilds'])->name('admin.guilds');
     Route::get('/kingdoms', [KingdomController::class, 'getAllKingdoms'])->name('admin.kingdoms');
