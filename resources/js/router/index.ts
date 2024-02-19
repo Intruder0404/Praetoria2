@@ -129,7 +129,7 @@ const routes: Array<RouteRecordRaw> = [
 ]
 
 const router = createRouter({
-  history: createWebHistory(import.meta.env.APP_URL),
+  history: createWebHistory(import.meta.env.APP_API_URL),
   routes,
   scrollBehavior(to, from, savedPosition) {
     return { top: 0 }
