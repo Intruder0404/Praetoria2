@@ -16,7 +16,7 @@
         <v-card-title>
           Login
         </v-card-title>
-        <Login v-if="!loading"/>
+        <Login/>
         <v-progress-linear v-else
                            color="deep-purple-accent-4"
                            indeterminate
