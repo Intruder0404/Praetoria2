@@ -17,7 +17,7 @@
           Login
         </v-card-title>
         <Login/>
-        <v-progress-linear v-else
+        <v-progress-linear
                            color="deep-purple-accent-4"
                            indeterminate
                            rounded
