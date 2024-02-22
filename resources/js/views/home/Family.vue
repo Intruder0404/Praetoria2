@@ -1,6 +1,6 @@
 <template>
-  <v-container  class="bg pa-0 ma-0" :fluid="true">
-    <InfoCard>
+  <v-container  class="bg pa-0 ma-0 d-flex justify-center align-center" :fluid="true">
+    <InfoCard class="v-col-10">
       <template #title>
         <div class="text-h1">
           Familles

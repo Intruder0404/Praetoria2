@@ -1,6 +1,6 @@
 <template>
-  <v-container class="bg pa-0 ma-0" :fluid="true">
-    <info-card :direction="'right'">
+  <v-container class="bg pa-0 ma-0 d-flex justify-center align-center" :fluid="true">
+    <info-card :direction="'right'" class="v-col-10">
       <template #title>
         <div class="text-xs-h4 text-md-h2 text-lg-h1">
           Legion Praetoria

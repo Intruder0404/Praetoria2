@@ -1,6 +1,6 @@
 <template>
-  <v-container :fluid="true" class="bg d-flex flex-row justify-lg-center align-center justify-md-center pa-0 ma-0">
-    <InfoCard class="mt-10">
+  <v-container :fluid="true" class="bg d-flex flex-row align-center justify-center pa-0 ma-0">
+    <InfoCard class="mt-10 v-col-10">
       <template #title>
         <div class="text-sm-h2 text-h2 text-md-h2 text-lg-h1 text-wrap">
           Devenez un fucking badass

@@ -1,6 +1,6 @@
 <template>
-  <div class="bg w-100" :fluid="true">
-    <info-card :direction="'right'">
+  <div class="bg pa-0 ma-0 d-flex justify-center align-center" :fluid="true">
+    <info-card :direction="'right'" class="v-col-10">
       <template #title>
         <div class="text-h1">
           Merchants
