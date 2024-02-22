@@ -26,7 +26,7 @@
               <div class="text-h4 text-center">
                 Venez affronter les tribues barbares du Duché de Bicolline comme recrue de la Legion Praetoria.
               </div>
-              <div class="v-col-9 text-h8 text-left">
+              <div class="v-col-10 text-h8 text-left">
                 Le duché de Bicolline est infecté par une mare de barbare qui mets en dangé notre guild et notre nation.
                 Étant le marteau de notre nation
                 nous sommes la clé de la performance de notre nation. Nous légionnaire sont armé et éguisé par leurs
@@ -59,13 +59,13 @@
           </v-container>
         </div>
         <v-divider class="v-col-6"></v-divider>
-        <div class="full-width">
+        <div class="v-col-12">
           <v-container>
             <v-row justify="center">
               <div class="text-h4 text-center">
                 Venez affronter vous bourrer la gueule après un longue journée de combat
               </div>
-              <div class="v-col-6 text-h8 text-left">
+              <div class="v-col-10 text-h8 text-left">
                 Notre Villa est un endroit spécial ou tout les plaisirs digne d'un bon légionaire sont célébré.
                 <v-list>
                   <v-list-item>
@@ -160,14 +160,14 @@
               <div class="v-col-6">
                 <div class="video-container center-block">
                   <div class="video">
-                    <iframe height="315" :src="result" frameborder="0"
+                    <iframe height="300" :src="result" frameborder="0"
                             allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
                             allowfullscreen></iframe>
                   </div>
                 </div>
                 <div class="video-container center-block">
                   <div class="video">
-                    <iframe height="315" :src="result" frameborder="0"
+                    <iframe height="30" :src="result" frameborder="0"
                             allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
                             allowfullscreen></iframe>
                   </div>
@@ -186,17 +186,17 @@
         <div class="v-col-12">
           <v-container>
             <v-row justify="center">
-              <div class="v-col-12 text-h4 text-center">
+              <div class="text-h4 text-center">
                 Participez a notre jeux politique interne
               </div>
-              <div class="v-col-7 text-h8 text-left">
+              <div class="v-col-9 text-h8 text-left">
                 Venez maintenir la structure politique la plus efficace de Bicolline. Notre république permet a
                 n'importe quel personne motivé de participer.
                 Voulez vous etre sénateur?
                 voulez vous représenter le peuple comme intendant?
                 voulez-vous devenir centurion et diriger sur le terrain?
               </div>
-              <div class="v-col-7 text-h2 text-center">
+              <div class="text-h4 text-center">
                 La Legion Praetoria est donc votre meilleur choix!
               </div>
             </v-row>
