@@ -1,17 +1,17 @@
 <template>
-  <v-container :fluid="true" class="bg d-flex flex-row justify-lg-center align-lg-center justify-md-center align-md-center pa-0 ma-0">
+  <v-container :fluid="true" class="bg d-flex flex-row justify-lg-center align-center justify-md-center pa-0 ma-0">
     <InfoCard class="mt-10">
       <template #title>
-        <div class="text-xs-h4 text-md-h2 text-lg-h1 text-wrap">
+        <div class="text-sm-h2 text-h2 text-md-h2 text-lg-h1 text-wrap">
           Devenez un fucking badass
         </div>
       </template>
       <template #body>
-        <div class="text-xs-h7 text-md-h4 text-lg-h5">
+        <div class="text-sm-h5 text-h5 text-xs-h5 text-md-h4 text-lg-h5">
           trouvez-vous que le monde sont des petite pisseuses?<br/>
           trouvez-vous dans une situation ou tout les gens autour de vous on l'air des mauviette?
         </div>
-        <div class="text-xs-h8 text-md-h3 text-lg-h4">
+        <div class="text-xs-h8 text-h3 text-md-h3 text-lg-h4">
           Ben devenez une recrue pour la Legion Praetoria.
         </div>
       </template>

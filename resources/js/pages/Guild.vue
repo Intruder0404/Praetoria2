@@ -3,16 +3,16 @@
     <v-main>
       <div class="d-flex flex-wrap justify-center">
         <div class="bg v-col-12">
-          <v-container style="height:90vh;">
+          <v-container style="height:90vh;" class="bg d-flex flex-row justify-lg-center align-center justify-md-center">
             <v-row class="fill-height" align="end">
               <info-card :direction="'right'">
                 <template #title>
-                  <div class="text-h1">
+                  <div class="text-h1 text-sm-h2 text-h2 text-md-h2 text-lg-h1 text-wrap">
                     {{ options.guilds?options.guilds[0].name:'' }}
                   </div>
                 </template>
                 <template #body>
-                  <div class="text-h5">
+                  <div class="text-sm-h5 text-h5 text-xs-h5 text-md-h4 text-lg-h5">
                     {{ options.guilds?options.guilds[0].attribute_values.find(av => av.attribute.name === 'Description').value.value:'' }}
                   </div>
                 </template>
@@ -26,7 +26,7 @@
               <div class="text-h4 text-center">
                 Venez affronter les tribues barbares du Duché de Bicolline comme recrue de la Legion Praetoria.
               </div>
-              <div class="v-col-6 text-h8 text-left">
+              <div class="v-col-9 text-h8 text-left">
                 Le duché de Bicolline est infecté par une mare de barbare qui mets en dangé notre guild et notre nation.
                 Étant le marteau de notre nation
                 nous sommes la clé de la performance de notre nation. Nous légionnaire sont armé et éguisé par leurs

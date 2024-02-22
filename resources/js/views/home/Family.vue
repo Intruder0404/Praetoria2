@@ -1,5 +1,5 @@
 <template>
-  <v-container class="bg pa-0 ma-0" :fluid="true">
+  <v-container  class="bg pa-0 ma-0" :fluid="true">
     <InfoCard>
       <template #title>
         <div class="text-xs-h7 text-md-h4 text-lg-h5">
