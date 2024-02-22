@@ -1,5 +1,5 @@
 <template>
-  <v-footer color="secondary" absolute inset app class="bg-grey-lighten-1" >
+  <v-footer color="secondary" absolute inset app>
     <v-row justify="center" :no-gutters="true">
       <v-btn
         v-for="link in links"
