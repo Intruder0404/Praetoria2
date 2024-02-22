@@ -2,7 +2,7 @@
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
     <meta charset="utf-8">
-    <link rel="icon" href="public/logo/praetoria-1-transparent.png" />
+    <link rel="icon" href="{{ asset('logo/praetoria-1-transparent.png') }}" type="image/x-icon"/>
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <title>Praetoria</title>
