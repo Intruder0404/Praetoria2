@@ -106,9 +106,6 @@ export default {
       ]
     };
   },
-  mounted() {
-    this.$root.vtoast = this.$refs.vtoast
-  },
   computed: {
     ...mapState(authStore, ["user", 'isAuthenticated']),
     ...mapState(optionsStore, ['options'])

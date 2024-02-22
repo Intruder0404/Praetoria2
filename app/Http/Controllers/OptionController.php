@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\TestEvent;
 use App\Models\Attribute\Attribute;
 use App\Models\Character\Character;
 use App\Models\DataType;
@@ -10,7 +11,6 @@ use App\Models\Guild\Guild;
 use App\Models\Kingdom\Kingdom;
 use App\Models\Religion\Religion;
 use App\Models\User\Rank;
-use App\Models\User\User;
 use App\Models\User\UserType;
 
 class OptionController
@@ -21,6 +21,7 @@ class OptionController
     }
     public function getAllOptions(): array
     {
+        event(new TestEvent());
         return [
             'religions'=>Religion::with(['attributeValues.attribute','attributeValues.type','attributeValues.value'])->get(),
             'kingdoms'=>Kingdom::with(['attributeValues.attribute','attributeValues.type','attributeValues.value'])->get(),
