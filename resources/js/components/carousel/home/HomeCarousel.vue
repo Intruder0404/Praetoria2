@@ -25,6 +25,34 @@
                 </v-btn>
             </template>
         </InfoCard>
+        <info-card class="mt-10 v-col-10">
+            <template #title>
+                <div class="text-sm-h4 text-h4 text-md-h4 text-lg-h4d text-wrap">
+                    Nouvelle
+                </div>
+            </template>
+            <template #body>
+                <v-card-text class="d-flex flex-wrap justify-space-between">
+                    <v-card
+                        class=""
+                        v-for="(family,idx) in options.families"
+                        :key="idx"
+                        color="primary"
+                        :title="family.name"
+                        :style="{height:'250px',width:'250px',backgroundSize:'250px 250px',backgroundImage:'url('+'logo/'+family.attribute_values.find(av=>av.attribute.name === 'Logo').value.value+')'}"
+                        link
+                    >
+                        <template>
+                            <div>
+                                {{
+                                    family.attribute_values.find(av => av.attribute.name === 'Description').value.value
+                                }}
+                            </div>
+                        </template>
+                    </v-card>
+                </v-card-text>
+            </template>
+        </info-card>
     </v-container>
 </template>
 <style scoped>
@@ -44,6 +72,8 @@
 </style>
 <script lang="ts">
 import InfoCard from "@/components/card/home/InfoCard.vue";
+import {mapState} from "pinia";
+import {optionsStore} from "../../../store/options";
 
 export default {
     components: {InfoCard},
@@ -52,7 +82,8 @@ export default {
     computed: {
         slides: () => {
             return Object.keys(import.meta.glob('@/assets/carousel/*'))
-        }
+        },
+        ...mapState(optionsStore, ['options'])
     },
     data() {
         return {
