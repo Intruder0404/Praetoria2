@@ -1,33 +1,17 @@
 <template>
-  <div class="v-col-12 pa-0">
-    <HomeCarousel :style="{'height': $vuetify.display.xs?'140vh':'140vh'}"/>
-  </div>
-  <v-spacer></v-spacer>
-  <div>
-    <div class="v-col-12 pa-0">
-      <Guild :style="{'height': $vuetify.display.xs?'50vh':'50vh'}"/>
-    </div>
+    <HomeCarousel :style="{'min-height': $vuetify.display.xs?'140vh':'140vh'}"/>
     <v-spacer></v-spacer>
-    <div class="v-col-12 pa-0">
-      <Family :style="{'height': $vuetify.display.xs?'auto':'50vh'}"/>
-    </div>
+    <Guild :style="{'height': $vuetify.display.xs?'50vh':'50vh'}"/>
     <v-spacer></v-spacer>
-    <div class="v-col-12 pa-0">
-      <Politics :style="{'height': $vuetify.display.xs?'auto':'50vh'}"/>
-    </div>
+    <Family :style="{'height': $vuetify.display.xs?'auto':'50vh'}"/>
     <v-spacer></v-spacer>
-    <div class="v-col-12 pa-0">
-      <Religion :style="{'height': $vuetify.display.xs?'auto':'50vh'}"/>
-    </div>
+    <Politics :style="{'height': $vuetify.display.xs?'auto':'50vh'}"/>
     <v-spacer></v-spacer>
-    <div class="v-col-12 pa-0">
-      <Merchants :style="{'height': $vuetify.display.xs?'auto':'50vh'}"/>
-    </div>
+    <Religion :style="{'height': $vuetify.display.xs?'auto':'50vh'}"/>
     <v-spacer></v-spacer>
-    <div class="v-col-12 pa-0">
-      <Bicolline :style="{'height': $vuetify.display.xs?'auto':'50vh'}"/>
-    </div>
-  </div>
+    <Merchants :style="{'height': $vuetify.display.xs?'auto':'50vh'}"/>
+    <v-spacer></v-spacer>
+    <Bicolline :style="{'height': $vuetify.display.xs?'auto':'50vh'}"/>
 </template>
 
 <script lang="ts">
@@ -40,11 +24,11 @@ import Bicolline from "@/views/home/Bicolline.vue";
 import Merchants from "@/views/home/Merchants.vue";
 
 export default {
-  components: {Merchants, Religion, Politics, Family, Guild, HomeCarousel, Bicolline},
-  data() {
-    return {
-      overlay: true
-    }
-  },
+    components: {Merchants, Religion, Politics, Family, Guild, HomeCarousel, Bicolline},
+    data() {
+        return {
+            overlay: true
+        }
+    },
 }
 </script>
