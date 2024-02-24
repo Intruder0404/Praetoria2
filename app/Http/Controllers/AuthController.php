@@ -26,7 +26,9 @@ class AuthController extends BaseController
             //Validated
             $validateUser = Validator::make($request->all(),
                 [
-                    'name' => 'required',
+                    'first_name' => 'required',
+                    'last_name' => 'required',
+                    'username' => 'required',
                     'email' => 'required|email|unique:users,email',
                     'password' => 'required'
                 ]);
@@ -39,16 +41,17 @@ class AuthController extends BaseController
                 ], 401);
             }
 
-            $user = User::create([
-                'name' => $request->name,
+            User::create([
+                'first_name' => $request->first_name,
+                'last_name' => $request->last_name,
+                'username' => $request->username,
                 'email' => $request->email,
                 'password' => Hash::make($request->password)
             ], 201);
 
             return response()->json([
                 'status' => true,
-                'message' => 'User Created Successfully',
-                'token' => $user->createToken("API_TOKEN")->plainTextToken
+                'message' => 'User Registered Successfully'
             ], 200);
 
         } catch (\Throwable $e) {
@@ -61,11 +64,11 @@ class AuthController extends BaseController
 
     public function login(Request $request): JsonResponse
     {
-        if (Auth::attempt(['email' => $request->email, 'password' => $request->password])) {
+        if (Auth::attempt(['email' => $request->email, 'password' => $request->password, 'isActive'=> 1])) {
             $user = Auth::user();
             return response()->json([
                 'token' =>  $user->createToken('MyApp')->plainTextToken,
-                'user'=>$this->users->getUserByIdAndChildren(Auth::id(), ['characters', 'userRank', 'userType', 'attributeValues.attribute', 'attributeValues.type', 'attributeValues.value']),
+                'user'=>$this->users->getUserByIdAndChildren($user->id, ['characters', 'userRank', 'userType', 'attributeValues.attribute', 'attributeValues.type', 'attributeValues.value']),
                 'message' => 'User Created Successfully',
             ], 200);
         } else {

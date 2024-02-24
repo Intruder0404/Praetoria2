@@ -4,9 +4,9 @@ import { UserNavigator,AppBar,Footer } from "@/components";
 import { authStore } from "@/store/auth";
 
 const routes: Array<RouteRecordRaw> = [
-  {path: '/', redirect: '/home'},
+  //{path: '/', redirect: '/'},
   {
-    path: '/home',
+    path: '/',
     name: 'home',
     components: {
       AppBar:AppBar,
@@ -63,7 +63,7 @@ const routes: Array<RouteRecordRaw> = [
     name: 'registration',
     components: {
       AppBar,
-      content: () => import('@/components/auth/registration.vue'),
+      content: () => import('@/pages/auth/Registration.vue'),
     },
     meta: { requiresAuth: false },
   },

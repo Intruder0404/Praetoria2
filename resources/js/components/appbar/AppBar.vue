@@ -33,7 +33,7 @@
         </v-menu>
         <v-divider vertical></v-divider>
         <v-btn
-            to="/home"
+            to="/"
             class="ml-4 mr-4"
             color="secondary"
             :rounded="true"
@@ -53,22 +53,22 @@
                 </v-btn>
             </template>
             <v-list class="text-center">
-                <v-list-item to="/Guild">
+                <v-list-item to="/guild">
                     La Legion
                 </v-list-item>
-                <v-list-item to="/Families">
+                <v-list-item to="/families">
                     Les Familles
                 </v-list-item>
-                <v-list-item to="/Politics">
+                <v-list-item to="/politics">
                     La Politique
                 </v-list-item>
-                <v-list-item to="/Religions">
+                <v-list-item to="/religions">
                     Les Religion
                 </v-list-item>
-                <v-list-item to="/Merchants">
+                <v-list-item to="/merchants">
                     Les Marchants
                 </v-list-item>
-                <v-list-item to="/Bicolline">
+                <v-list-item to="/bicolline">
                     Bicolline
                 </v-list-item>
             </v-list>
@@ -109,7 +109,6 @@
 import {mapActions, mapState} from "pinia";
 import {authStore} from "@/store/auth";
 import {LoginDialog, ThemeButton, LanguageButton} from "@/components";
-import {defineComponent} from "vue";
 
 export default {
     components: {
@@ -122,7 +121,7 @@ export default {
         async submit() {
             try {
                 await this.logOut();
-                this.$router.push('/home');
+                this.$router.push('/');
             } catch (error) {
                 this.$root.vtoast.show({message: error});
             }

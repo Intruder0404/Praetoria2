@@ -28,7 +28,19 @@ export const authStore = defineStore('auth', {
         user: null,
     }),
     actions: {
-        register(registerData = {}) {
+        async register(registerData: any) {
+            this.loading = true;
+            await axios.post('auth/register', {
+                ...registerData
+            })
+                .then((response: any) => {
+                    this.loading = false;
+                })
+                .catch(error => {
+                    this.error = error.response.data.error;
+                    this.loading = false;
+                    throw new Error('Email or Password is incorrect');
+                });
         },
         async LogIn(loginData: any) {
             this.loading = true;

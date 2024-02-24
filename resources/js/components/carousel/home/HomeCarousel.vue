@@ -16,7 +16,7 @@
                 </div>
             </template>
             <template #actions>
-                <v-btn :block="$vuetify.display.xs" class="pa-0 ma-0" size="large"
+                <v-btn :block="$vuetify.display.xs" class="pa-0 ma-0" size="large" to="/registration"
                        style="background: rgba(76, 175, 80, 0.3)">Devenir une recrue aujourd'hui
                 </v-btn>
                 <br/>
@@ -73,7 +73,7 @@
 <script lang="ts">
 import InfoCard from "@/components/card/home/InfoCard.vue";
 import {mapState} from "pinia";
-import {optionsStore} from "../../../store/options";
+import {optionsStore} from "@/store/options";
 
 export default {
     components: {InfoCard},

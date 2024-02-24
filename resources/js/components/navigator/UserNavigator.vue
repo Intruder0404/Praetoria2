@@ -55,7 +55,7 @@ export default {
     async submit(){
       try{
         await this.logOut();
-        this.$router.push('/home');
+        this.$router.push('/');
       }catch (error) {
         this.$root.vtoast.show({message: error});
       }

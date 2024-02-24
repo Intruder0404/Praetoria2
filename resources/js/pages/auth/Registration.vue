@@ -1,98 +1,88 @@
 <template>
-  <v-app >
-    <v-main>
-      <v-container fluid fill-height>
-        <v-layout align-center justify-center>
-          <v-flex xs12 sm8 md4>
-            <v-card class="elevation-12">
-              <v-toolbar dark color="primary">
-                <v-toolbar-title>{{isRegister ? stateObj.register.name : stateObj.login.name}} form</v-toolbar-title>
-              </v-toolbar>
-              <v-card-text>
-                <form ref="form" @submit.prevent="isRegister ? register() : login()">
-                  <v-text-field
+    <div class="d-flex align-center justify-center" style="height: 100vh">
+        <v-sheet width="400" class="mx-auto">
+            <v-form fast-fail @submit.prevent="submit">
+                <v-text-field
+                    v-model="first_name"
+                    label="First name"
+                    :rules="[rules.required]"
+                ></v-text-field>
+                <v-text-field
+                    v-model="last_name"
+                    label="Last name"
+                    :rules="[rules.required]"
+                ></v-text-field>
+                <v-text-field
                     v-model="username"
-                    name="username"
                     label="Username"
-                    type="text"
-                    placeholder="username"
-                    required
-                  ></v-text-field>
-
-                  <v-text-field
+                    :rules="[rules.required]"
+                ></v-text-field>
+                <v-text-field
+                    v-model="email"
+                    label="E-mail"
+                    :rules="[rules.required, rules.email]"
+                ></v-text-field>
+                <v-text-field
                     v-model="password"
-                    name="password"
                     label="Password"
                     type="password"
-                    placeholder="password"
+                    :rules="[
+                        rules.required,
+                        rules.min8,
+                        rules.lowerCase1,
+                        rules.upperCase1,
+                        rules.digitCase1,
+                        rules.specialCharacter1,
+                        ]"
+                ></v-text-field>
+                <v-text-field
+                    v-model="confirmPassword"
+                    label="Confirm Password"
+                    type="password"
                     required
-                  ></v-text-field>
+                ></v-text-field>
 
-                  <v-text-field v-if="isRegister"
-                                v-model="confirmPassword"
-                                name="confirmPassword"
-                                label="Confirm Password"
-                                type="password"
-                                placeholder="cocnfirm password"
-                                required
-                  ></v-text-field>
-                  <div class="red--text"> {{errorMessage}}</div>
-                  <v-btn type="submit" class="mt-4" color="primary" value="log in">{{isRegister ? stateObj.register.name : stateObj.login.name}}</v-btn>
-                  <div class="grey--text mt-4" v-on:click="isRegister = !isRegister;">
-                    {{toggleMessage}}
-                  </div>
-                </form>
-              </v-card-text>
-            </v-card>
-
-          </v-flex>
-        </v-layout>
-      </v-container>
-    </v-main>
-  </v-app>
+                <v-btn
+                    type="submit"
+                    color="primary"
+                    block
+                    class="mt-2"
+                >Register</v-btn>
+            </v-form>
+        </v-sheet>
+    </div>
 </template>
-
 <script lang="ts">
+import {mapActions, mapState} from "pinia";
+import {authStore} from "@/store/auth";
+import {validationStore} from "@/store/validation";
+
 export default {
-  name: "App",
-  data() {
-    return {
-      username: "",
-      password: "",
-      confirmPassword: "",
-      isRegister : false,
-      errorMessage: "",
-      stateObj: {
-        register :{
-          name: 'Register',
-          message: 'Aleady have an Acoount? login.'
-        },
-        login : {
-          name: 'Login',
-          message: 'Register'
-        }
-      }
-    };
-  },
-  methods: {
-    login() {
-      const { username } = this;
-      console.log(username + "logged in")
+    name: "App",
+    data() {
+        return {
+            first_name: '',
+            last_name: '',
+            username: '',
+            email: '',
+            password: '',
+            confirmPassword: ''
+        };
     },
-    register() {
-      if(this.password == this.confirmPassword){
-        this.isRegister = false;
-        this.errorMessage = "";
-        this.$refs.form.reset();
-      }
-      else {
-        this.errorMessage = "password did not match"
-      }
+    computed:{
+        ...mapState(validationStore,['rules'])
+    },
+    methods: {
+        ...mapActions(authStore, ["register"]),
+        async submit() {
+            console.log(this.password === this.confirmPassword);
+            if (this.password === this.confirmPassword) {
+                await this.register({first_name:this.first_name,last_name:this.last_name,username:this.username,email:this.email, password:this.password});
+                this.$refs.form.reset();
+            } else {
+                this.errorMessage = "password did not match"
+            }
+        }
     }
-  },
-  computed: {
-    toggleMessage : function() {
-      return this.isRegister ? this.stateObj.register.message : this.stateObj.login.message }
-  }
 };
 </script>
