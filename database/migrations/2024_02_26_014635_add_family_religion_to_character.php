@@ -15,9 +15,6 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('character', function (Blueprint $table) {
-            $table->foreignIdFor(Family::class);
-            $table->foreignIdFor(Religion::class);
-            $table->foreignIdFor(Rank::class);
         });
     }
 
@@ -27,7 +24,6 @@ return new class extends Migration
     public function down(): void
     {
         Schema::table('character', function (Blueprint $table) {
-            $table->dropColumn(['family_id', 'religion_id', 'rank_id']);
         });
     }
 };
