@@ -20,13 +20,13 @@ return new class extends Migration
             $table->string('name');
             $table->timestamps();
         });*/
-        Schema::create('orders', function (Blueprint $table) {
+        /*Schema::create('orders', function (Blueprint $table) {
             $table->id();
             $table->foreignIdFor(User::class);
             $table->foreignIdFor(OrderStatus::class);
             $table->timestamps();
-        });
-        Schema::table('order_products', function (Blueprint $table) {
+        });*/
+        Schema::create('order_products', function (Blueprint $table) {
             $table->foreignIdFor(Order::class);
             $table->foreignIdFor(Product::class);
         });
