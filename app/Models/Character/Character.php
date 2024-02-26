@@ -2,9 +2,12 @@
 
 namespace App\Models\Character;
 
-use Carbon\Carbon;
+use App\Models\Family\Family;
+use App\Models\Religion\Religion;
+use App\Models\User\Rank;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 
 /**
  * Class Character
@@ -17,27 +20,33 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Character extends Model
 {
-    protected $table = 'character';
+    use HasFactory;
 
     protected $fillable = [
         'name',
         'user_id',
         'isActive'
     ];
-    /**
-     * The attributes that should be cast.
-     *
-     * @var array
-     */
+
+    protected $hidden = [
+        'rank_id',
+        'religion_id',
+        'family_id',
+    ];
+
     protected $casts = [
         'isActive' => 'boolean',
     ];
-    public function attributeValues()
+    public function rank(): HasOne
     {
-        return $this->hasMany(CharacterAttributeValue::class,'user_id');
+        return $this->hasOne(Rank::class);
     }
-    public function attribute()
+    public function religion(): HasOne
     {
-        return $this->hasMany(CharacterAttribute::class,'user_id');
+        return $this->hasOne(Religion::class);
+    }
+    public function family(): HasOne
+    {
+        return $this->hasOne(Family::class);
     }
 }

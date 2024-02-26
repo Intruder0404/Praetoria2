@@ -6,8 +6,13 @@
 
 namespace App\Models\Attribute;
 
+use App\Models\DataType;
+use App\Models\User\UserAttributeValue;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasOneThrough;
 
 /**
  * Class Attribute
@@ -26,6 +31,7 @@ class Attribute extends Model
 	protected $table = 'attributes';
 
 	protected $fillable = [
+        'id',
 		'name',
         'isActive'
 	];
@@ -38,4 +44,9 @@ class Attribute extends Model
     protected $casts = [
         'isActive' => 'boolean',
     ];
+
+    /*public function type() : hasOneThrough
+    {
+        return $this->hasOneThrough(DataType::class,UserAttributeValue::class,'type_id',null,'id');
+    }*/
 }

@@ -11,6 +11,7 @@ use App\Models\Guild\Guild;
 use App\Models\Kingdom\Kingdom;
 use App\Models\Religion\Religion;
 use App\Models\User\Rank;
+use App\Models\User\User;
 use App\Models\User\UserType;
 
 class OptionController
@@ -23,11 +24,11 @@ class OptionController
     {
         event(new TestEvent());
         return [
-            'religions'=>Religion::with(['attributeValues.attribute','attributeValues.type','attributeValues.value'])->get(),
-            'kingdoms'=>Kingdom::with(['attributeValues.attribute','attributeValues.type','attributeValues.value'])->get(),
-            'guilds'=>Guild::with(['attributeValues.attribute','attributeValues.type','attributeValues.value'])->get(),
-            'families'=>Family::with(['attributeValues','attributeValues.attribute','attributeValues.type','attributeValues.value'])->get(),
-            'users'=>$this->users->getAllUsers(),
+            'religions'=>Religion::all(),
+            'kingdoms'=>Kingdom::all(),
+            'guilds'=>Guild::all(),
+            'families'=>Family::all(),
+            'users'=>User::with(['characters', 'type'])->get(),
             'userTypes'=>UserType::all(),
             'attributes'=>Attribute::all(),
             'ranks'=>Rank::all(),

@@ -8,7 +8,7 @@
       </template>
       <template #body>
         <div class="text-xs-h7 text-md-h4 text-lg-h5">
-          {{ options.guilds?options.guilds[0].attribute_values.find(av => av.attribute.name === 'Description').value.value:'' }}
+          {{ options.guilds[0].description }}
         </div>
       </template>
       <template #actions>

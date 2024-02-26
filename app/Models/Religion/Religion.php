@@ -7,6 +7,7 @@
 namespace App\Models\Religion;
 
 use Carbon\Carbon;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 /**
@@ -22,7 +23,7 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Religion extends Model
 {
-	protected $table = 'religions';
+    use HasFactory;
 
 	protected $fillable = [
 		'name',
@@ -37,9 +38,4 @@ class Religion extends Model
     protected $casts = [
         'isActive' => 'boolean',
     ];
-
-    public function attributeValues()
-    {
-        return $this->hasMany(ReligionAttributeValue::class,'religion_id');
-    }
 }

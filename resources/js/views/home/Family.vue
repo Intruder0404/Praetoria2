@@ -14,12 +14,12 @@
             :key="idx"
             color="primary"
             :title="family.name"
-            :style="{height:'300px',width:'300px',backgroundSize:'300px 300px',backgroundImage:'url('+'logo/'+family.attribute_values.find(av=>av.attribute.name === 'Logo').value.value+')'}"
+            :style="{height:'300px',width:'300px',backgroundSize:'300px 300px',backgroundImage:'url('+'logo/'+family.logo+')'}"
             link
           >
             <template>
               <div>
-                {{ family.attribute_values.find(av => av.attribute.name === 'Description').value.value }}
+                {{ family.description }}
               </div>
             </template>
           </v-card>

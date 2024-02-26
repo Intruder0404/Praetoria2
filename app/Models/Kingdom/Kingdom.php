@@ -8,6 +8,7 @@ namespace App\Models\Kingdom;
 
 use App\Models\Kingdom\KingdomAttributeValue;
 use Carbon\Carbon;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 /**
@@ -23,7 +24,7 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Kingdom extends Model
 {
-	protected $table = 'kingdoms';
+    use HasFactory;
 
 	protected $fillable = [
 		'name',
@@ -38,9 +39,4 @@ class Kingdom extends Model
     protected $casts = [
         'isActive' => 'boolean',
     ];
-
-    public function attributeValues()
-    {
-        return $this->hasMany(KingdomAttributeValue::class,'kingdom_id');
-    }
 }

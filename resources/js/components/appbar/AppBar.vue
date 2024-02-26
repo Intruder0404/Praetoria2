@@ -94,7 +94,7 @@
                     Account Settings
                 </v-list-item>
                 <LoginDialog :activator="'list-item'" v-if="!isAuthenticated"/>
-                <v-list-item v-else @click="submit">
+                <v-list-item @click="submit">
                     <v-icon icon="mdi-logout">
 
                     </v-icon>

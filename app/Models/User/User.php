@@ -2,9 +2,11 @@
 
 namespace App\Models\User;
 
+use App\Models\Attribute\Attribute;
 use App\Models\Character\Character;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Fortify\TwoFactorAuthenticatable;
@@ -49,8 +51,7 @@ class User extends Authenticatable
         'email',
         'password',
         'isActive',
-        'type',
-        'rank'
+        'type_id',
     ];
 
     /**
@@ -63,6 +64,7 @@ class User extends Authenticatable
         'remember_token',
         'two_factor_recovery_codes',
         'two_factor_secret',
+        'type_id',
     ];
 
     /**
@@ -82,18 +84,9 @@ class User extends Authenticatable
     protected $appends = [
         //'profile_photo_url',
     ];
-
-    public function attributeValues()
+    public function type()
     {
-        return $this->hasMany(UserAttributeValue::class,'user_id');
-    }
-    public function userType()
-    {
-        return $this->hasOne(UserType::class,'id','type');
-    }
-    public function userRank()
-    {
-        return $this->hasOne(Rank::class,'id','rank');
+        return $this->hasOne(UserType::class,'id','type_id');
     }
     public function characters()
     {

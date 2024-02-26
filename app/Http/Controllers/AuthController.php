@@ -68,7 +68,7 @@ class AuthController extends BaseController
             $user = Auth::user();
             return response()->json([
                 'token' =>  $user->createToken('MyApp')->plainTextToken,
-                'user'=>$this->users->getUserByIdAndChildren($user->id, ['characters', 'userRank', 'userType', 'attributeValues.attribute', 'attributeValues.type', 'attributeValues.value']),
+                'user'=>$this->users->getUserByIdAndChildren($user->id, ['characters', 'userRank', 'userType','attributes', 'attributeValues.attribute', 'attributeValues.type', 'attributeValues.value']),
                 'message' => 'User Created Successfully',
             ], 200);
         } else {

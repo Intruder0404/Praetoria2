@@ -23,15 +23,7 @@ class UserController extends BaseController
 
     public function getAllUsers(): Collection|array
     {
-        $users = User::with(['characters','userRank', 'userType', 'attributeValues.attribute', 'attributeValues.type', 'attributeValues.value'])->get();
-        foreach ($users as $user) {
-            foreach ($user->attributeValues as &$attributeValue) {
-                if ($attributeValue->type->type === 'integer'&&$attributeValue->value->value) {
-                    $attributeValue->value->value = (int)$attributeValue->value->value;
-                }
-            }
-        }
-        return $users;
+        return User::with(['characters', 'type'])->get();
     }
 
     public function updateUser(Request $request): JsonResponse
