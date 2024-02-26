@@ -20,7 +20,7 @@
                          to="/family"></v-list-item>
             <v-list-item prepend-icon="mdi-home-group" title="Reservation" value="reservation"
                          to="/reservation"></v-list-item>
-            <v-list-group open-on-hover v-if="user.type.id === 2" prepend-icon="mdi-account-group"
+<!--            <v-list-group open-on-hover v-if="user.type.id === 2" prepend-icon="mdi-account-group"
                           title="Administration" value="admin">
                 <template #activator="{ props }">
                     <v-list-item
@@ -54,7 +54,7 @@
                              :to="{ name: 'admin', params:{ name: 'reservations' }}"/>
                 <v-list-item prepend-icon="mdi-human-male" title="News"
                              :to="{ name: 'admin', params:{ name: 'news' }}"/>
-            </v-list-group>
+            </v-list-group>-->
             <v-list-item v-if="isAuthenticated" prepend-icon="mdi-logout" title="Logout" @click="submit"></v-list-item>
         </v-list>
     </v-navigation-drawer>
