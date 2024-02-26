@@ -7,7 +7,7 @@
                 :items="newOptions[name]"
                 :loading="optionLoading"
             >
-                <template v-slot:top>
+                <template #top>
                     <v-toolbar flat color="primary">
                         <v-toolbar-title>Administration</v-toolbar-title>
                         <CreateDialog @closeCreate="closeDialog('create')" :isActive="dialog"/>
@@ -45,94 +45,6 @@
                 <template #item.type="{ value }">
                     {{ value.name }}
                 </template>
-<!--                <template
-                    #[`item`]="{ item }"
-                >
-                    <tr
-                    >
-                        <template v-for="(property,key) in item">
-                            <td :key="'raw'+key"
-                                v-if="Number.isInteger(property)&&String(key) !== 'id'&&String(key) !== 'type'&&String(key) !== 'rank'&&String(key) !== 'user_id'">
-                                <v-checkbox
-                                    :value="item[key]"
-                                    disabled
-                                ></v-checkbox>
-
-                            </td>
-                            <td :key="'user'+key" v-else-if="String(key) === 'user_id'">
-                                {{
-                                    newOptions.users.find(u => u.id == property).first_name + ' ' + newOptions.users.find(u => u.id === property).last_name
-                                }}
-                            </td>
-                            <td :key="'active'+key" v-else-if="String(key) === 'isActive'">
-                                <v-checkbox
-                                    v-model="item[key]"
-                                    disabled
-                                ></v-checkbox>
-                            </td>
-                            <td :key="'characters'+key" v-else-if="String(key) === 'characters'">
-                                <v-autocomplete
-                                    :items="property"
-                                    item-title="name"
-                                    multiple
-                                ></v-autocomplete>
-                            </td>
-                            <td :key="'user-rank'+key" v-else-if="String(key) === 'user_rank'">
-                                {{ Object(property).name }}
-                            </td>
-                            <td :key="'user-type'+key" v-else-if="String(key) === 'user_type'">
-                                {{ Object(property).name }}
-                            </td>
-                            <td :key="'attribute-value'+Object(attribute_value).id"
-                                v-else-if="String(key) === 'attribute_values'"
-                                v-for="attribute_value in property">
-                                <template v-if="Object(attribute_value).attribute.name === 'Family'">
-                                    {{
-                                        newOptions.families.find(f => f.id = Object(attribute_value).value.value) ? newOptions.families.find(f => f.id = Object(attribute_value).value.value).name : ''
-                                    }}
-                                </template>
-                                <template v-else-if="Object(attribute_value).attribute.name === 'Religion'">
-                                    {{
-                                        newOptions.religions.find(f => f.id = Object(attribute_value).value.value) ? newOptions.religions.find(f => f.id = Object(attribute_value).value.value).name : ''
-                                    }}
-                                </template>
-                                &lt;!&ndash;                <template v-if="Object(attribute_value).attribute.name === 'Population'">
-                                                  {{newOptions.users.filter(u=>u.attribute_values.find(uav=>uav.attribute.name === 'Family'&&uav.value.value == item.id)).length}}
-                                                </template>&ndash;&gt;
-                                <template v-else>
-                                    {{ Object(attribute_value).value.value }}
-                                </template>
-                            </td>
-                            <td :key="key" v-else>
-                                {{ property }}
-                            </td>
-                        </template>
-                        &lt;!&ndash;                        <td>
-                                                    {{ Array.from(Array(headers.length - Object.keys(item).length).keys()) }}
-                                                </td>&ndash;&gt;
-                        <template
-                            v-for="(property,key) in Array.from(Array(headers.length-(Object.keys(item).length+item.attribute_values.length)).keys())"
-                            v-if="Object.keys(item).length < headers.length">
-                            <td>
-                            </td>
-                        </template>
-                        <td key="actions">
-                            <v-icon
-                                size="small"
-                                class="me-2"
-                                @click="editItem(item)"
-                            >
-                                mdi-pencil
-                            </v-icon>
-                            <v-icon
-                                size="small"
-                                @click="deleteItem(item)"
-                            >
-                                mdi-delete
-                            </v-icon>
-                        </td>
-                    </tr>
-                </template>-->
             </v-data-table>
         </v-card>
     </v-container>

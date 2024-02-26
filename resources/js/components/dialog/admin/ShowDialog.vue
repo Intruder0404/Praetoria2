@@ -1,6 +1,6 @@
 <template>
   <v-dialog v-model="active">
-    <template v-slot:activator="{ props }">
+    <template #activator="{ props }">
       <v-btn color="primary" dark class="mb-2" v-bind="props">
         New Item
       </v-btn>

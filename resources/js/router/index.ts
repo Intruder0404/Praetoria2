@@ -40,6 +40,15 @@ const routes: Array<RouteRecordRaw> = [
         meta: {requiresAuth: true},
     },
     {
+        path: '/account',
+        name: 'account',
+        components: {
+            UserNavigator,
+            content: () => import('@/pages/administration/Account.vue'),
+        },
+        meta: {requiresAuth: true},
+    },
+    {
         path: '/character',
         name: 'character',
         components: {
@@ -49,11 +58,20 @@ const routes: Array<RouteRecordRaw> = [
         meta: {requiresAuth: true},
     },
     {
-        path: '/account',
-        name: 'account',
+        path: '/family',
+        name: 'family',
         components: {
             UserNavigator,
-            content: () => import('@/pages/administration/Account.vue'),
+            content: () => import('@/pages/administration/Family.vue'),
+        },
+        meta: {requiresAuth: true},
+    },
+    {
+        path: '/reservation',
+        name: 'reservation',
+        components: {
+            UserNavigator,
+            content: () => import('@/pages/administration/Reservation.vue'),
         },
         meta: {requiresAuth: true},
     },

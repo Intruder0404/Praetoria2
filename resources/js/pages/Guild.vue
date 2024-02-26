@@ -72,7 +72,7 @@
                     <v-list-item-title>
                       Alcool
                     </v-list-item-title>
-                    <template v-slot:prepend>
+                    <template #prepend>
                       <v-list-item-action start>
                         <v-checkbox-btn :model-value="true"></v-checkbox-btn>
                       </v-list-item-action>
@@ -82,7 +82,7 @@
                     <v-list-item-title>
                       Produit du tabac
                     </v-list-item-title>
-                    <template v-slot:prepend>
+                    <template #prepend>
                       <v-list-item-action start>
                         <v-checkbox-btn :model-value="true"></v-checkbox-btn>
                       </v-list-item-action>
@@ -92,7 +92,7 @@
                     <v-list-item-title>
                       Produit de la marijuana
                     </v-list-item-title>
-                    <template v-slot:prepend>
+                    <template #prepend>
                       <v-list-item-action start>
                         <v-checkbox-btn :model-value="true"></v-checkbox-btn>
                       </v-list-item-action>
@@ -102,7 +102,7 @@
                     <v-list-item-title>
                       Course de char
                     </v-list-item-title>
-                    <template v-slot:prepend>
+                    <template #prepend>
                       <v-list-item-action start>
                         <v-checkbox-btn :model-value="true"></v-checkbox-btn>
                       </v-list-item-action>
@@ -112,7 +112,7 @@
                     <v-list-item-title>
                       Caca de troll
                     </v-list-item-title>
-                    <template v-slot:prepend>
+                    <template #prepend>
                       <v-list-item-action start>
                         <v-checkbox-btn :model-value="true"></v-checkbox-btn>
                       </v-list-item-action>
@@ -122,7 +122,7 @@
                     <v-list-item-title>
                       Tree Man
                     </v-list-item-title>
-                    <template v-slot:prepend>
+                    <template #prepend>
                       <v-list-item-action start>
                         <v-checkbox-btn :model-value="true"></v-checkbox-btn>
                       </v-list-item-action>
@@ -132,7 +132,7 @@
                     <v-list-item-title>
                       Jawa
                     </v-list-item-title>
-                    <template v-slot:prepend>
+                    <template #prepend>
                       <v-list-item-action start>
                         <v-checkbox-btn :model-value="true"></v-checkbox-btn>
                       </v-list-item-action>
@@ -142,7 +142,7 @@
                     <v-list-item-title>
                       Combats de dague
                     </v-list-item-title>
-                    <template v-slot:prepend>
+                    <template #prepend>
                       <v-list-item-action start>
                         <v-checkbox-btn :model-value="true"></v-checkbox-btn>
                       </v-list-item-action>

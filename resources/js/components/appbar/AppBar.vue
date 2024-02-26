@@ -12,7 +12,7 @@
             :close-on-content-click="true"
             transition="slide-y-transition"
         >
-            <template v-slot:activator="{ props }">
+            <template #activator="{ props }">
                 <v-btn
                     v-bind="props"
                     style="background-color: #381879;height:50px"
@@ -44,7 +44,7 @@
                 </v-avatar>
         </v-btn>
         <v-menu :close-on-content-click="true">
-            <template v-slot:activator="{ props }">
+            <template #activator="{ props }">
                 <v-btn
                     v-bind="props"
                 >
@@ -76,8 +76,8 @@
         <v-spacer></v-spacer>
         <LanguageButton/>
         <ThemeButton/>
-        <v-menu :open-on-hover="true" :close-on-content-click="false">
-            <template v-slot:activator="{ props }">
+        <v-menu :close-on-content-click="false">
+            <template #activator="{ props }">
                 <v-btn
                     v-bind="props"
                 >

@@ -1,7 +1,7 @@
 <template>
     <v-dialog v-model="active"
               width="auto">
-      <template v-slot:activator="{ props }">
+      <template #activator="{ props }">
         <v-btn v-if="activator==='button'" style="width: 100%" v-bind="props">
           Login
         </v-btn>

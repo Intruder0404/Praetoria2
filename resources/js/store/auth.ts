@@ -2,12 +2,14 @@
 import {defineStore} from 'pinia'
 import {HTTP as axios} from '@/http-common';
 import {User} from "@/models/User/User";
+import {toRaw} from "vue";
 
 interface IAuthStoreStates {
     accessToken: string;
     error?: string;
     loading: boolean;
     user?: User;
+    modifiableUser: User;
 }
 
 interface ILoginResponse {
@@ -26,6 +28,7 @@ export const authStore = defineStore('auth', {
         error: null,
         loading: false,
         user: null,
+        modifiableUser: null,
     }),
     actions: {
         async register(registerData: any) {
@@ -49,6 +52,7 @@ export const authStore = defineStore('auth', {
             })
                 .then((response: any) => {
                     this.user = response.data.user;
+                    this.modifiableUser = structuredClone(toRaw(response.data.user));
                     this.accessToken = response.data.token;
                     this.error = null;
                     this.loading = false;
@@ -79,9 +83,10 @@ export const authStore = defineStore('auth', {
         },
         async updateUser() {
             this.loading = true;
-            axios.post('updateUser', {user: this.user})
+            axios.post('updateUser', {user: this.modifiableUser})
                 .then(response => {
                     this.user = response.data.data
+                    this.modifiableUser = structuredClone(toRaw(response.data.data));
                     this.loading = false;
                 })
                 .catch(error => {

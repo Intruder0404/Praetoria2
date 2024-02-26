@@ -54,7 +54,7 @@
             disabled
           ></v-checkbox>
           <v-menu class="full-width" v-else-if="String(key)=='characters'">
-            <template v-slot:activator="{ props }">
+            <template #activator="{ props }">
               <v-btn
                 style="width: 100%;height: 100%"
                 color="primary"
