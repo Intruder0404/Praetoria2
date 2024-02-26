@@ -26,43 +26,13 @@
           </v-col>
           <v-col cols="12" sm="6" md="6">
             <v-select
-              v-if="user.user_type.name === 'admin'"
+              v-if="user.type.name === 'admin'"
               v-model="user.type"
               :items="options.userTypes"
               label="User Type"
               item-title="name"
               item-value="id"
             />
-          </v-col>
-          <v-col cols="12" sm="6" md="6">
-            <v-select
-              v-if="user.user_type.name === 'admin'"
-              v-model="user.user_rank"
-              :items="options.ranks"
-              label="Rank"
-              item-title="name"
-              item-value="id"
-              :return-object="true"
-            />
-          </v-col>
-          <v-col v-for="attribute_value in user.attribute_values" cols="12" sm="6" md="6">
-            <v-select
-              v-if="attribute_value.attribute.name === 'Family'"
-              v-model="attribute_value.value.value"
-              :items="options.families"
-              :label="attribute_value.attribute.name"
-              item-title="name"
-              item-value="id"
-            />
-            <v-select
-              v-if="attribute_value.attribute.name === 'Religion'"
-              v-model.number="attribute_value.value.value"
-              :items="options.religions"
-              :label="attribute_value.attribute.name"
-              item-title="name"
-              item-value="id"
-            >
-            </v-select>
           </v-col>
           <v-spacer></v-spacer>
           <v-col class="d-flex ml-auto" cols="12" sm="3" xsm="12">

@@ -4,18 +4,17 @@
     <v-list>
       <v-list-item
         v-if="user!==undefined"
-        :prepend-avatar="'/rank/'+user.user_rank.name+'.png'"
+        :prepend-avatar="'/rank/'+user.characters.find(c=>c.isActive).rank.name+'.png'"
         :title="user.username"
       >
       </v-list-item>
     </v-list>
-
     <v-divider></v-divider>
 
     <v-list density="compact" nav>
       <v-list-item prepend-icon="mdi-account" title="User Account" to="/account"></v-list-item>
       <v-list-item prepend-icon="mdi-account-child-outline" title="Personnage" value="personnage" to="/character"></v-list-item>
-      <v-list-group open-on-hover v-if="user.type === 2" prepend-icon="mdi-account-group" title="Administration" value="admin">
+      <v-list-group open-on-hover v-if="user.type.id === 2" prepend-icon="mdi-account-group" title="Administration" value="admin">
         <template v-slot:activator="{ props }">
           <v-list-item
             v-bind="props"

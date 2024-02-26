@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\CharacterController;
 use App\Http\Controllers\FamilyController;
 use App\Http\Controllers\GuildController;
 use App\Http\Controllers\KingdomController;
@@ -33,6 +34,9 @@ Route::prefix('auth')->group(function () {
 });*/
 Route::get('/options', [OptionController::class, 'getAllOptions'])->name('admin.options');
 Route::middleware('auth:sanctum')->group(function () {
+    Route::prefix('character')->group(function () {
+        Route::put('/update/{character}', [CharacterController::class, 'update'])->name('character.update');
+    });
     Route::get('/religions', [ReligionController::class, 'getAllReligions'])->name('admin.religions');
     Route::get('/guilds', [GuildController::class, 'getAllGuilds'])->name('admin.guilds');
     Route::get('/kingdoms', [KingdomController::class, 'getAllKingdoms'])->name('admin.kingdoms');

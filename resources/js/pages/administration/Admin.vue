@@ -33,6 +33,18 @@
                         mdi-delete
                     </v-icon>
                 </template>
+                <template #item.rank="{ value }">
+                    {{value.name}}
+                </template>
+                <template #item.characters="{ value }">
+                    <v-autocomplete
+                        :items="value"
+                        item-title="name"
+                    ></v-autocomplete>
+                </template>
+                <template #item.type="{ value }">
+                    {{ value.name }}
+                </template>
 <!--                <template
                     #[`item`]="{ item }"
                 >

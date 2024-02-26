@@ -32,7 +32,7 @@ class OptionController
             'userTypes'=>UserType::all(),
             'attributes'=>Attribute::all(),
             'ranks'=>Rank::all(),
-            'characters'=>Character::all(),
+            'characters'=>Character::with(['rank'])->get(),
             'data_type'=>DataType::all(),
         ];
     }

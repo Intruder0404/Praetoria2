@@ -90,7 +90,10 @@ class User extends Authenticatable
     }
     public function characters()
     {
-        return $this->hasMany(Character::class,'user_id');
+        return $this->hasMany(Character::class,'user_id')
+            ->with('rank')
+            ->with('family')
+            ->with('religion');
     }
 }
 

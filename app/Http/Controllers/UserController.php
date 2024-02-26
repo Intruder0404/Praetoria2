@@ -12,7 +12,7 @@ class UserController extends BaseController
 {
     public function getUserByIdAndChildren($id, $children): User
     {
-        return User::where('id',$id)->with($children)->first();;
+        return User::where('id',$id)->with($children)->first();
     }
 
     public function getAllUsers(): Collection|array
