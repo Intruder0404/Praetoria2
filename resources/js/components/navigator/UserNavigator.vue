@@ -1,14 +1,14 @@
 <template>
     <v-navigation-drawer
     >
-        <v-list>
+<!--        <v-list>
             <v-list-item
                 v-if="user!==undefined"
                 :prepend-avatar="'/rank/'+user.characters.find(c=>c.isActive).rank.name+'.png'"
                 :title="user.username"
             >
             </v-list-item>
-        </v-list>
+        </v-list>-->
         <v-divider></v-divider>
 
         <v-list density="compact" nav>
