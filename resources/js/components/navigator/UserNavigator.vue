@@ -1,7 +1,8 @@
 <template>
     <v-navigation-drawer
     >
-        <v-list>
+        {{user.characters}}
+<!--        <v-list>
             <v-list-item
                 v-if="user!==undefined"
                 :prepend-avatar="'/rank/'+user.characters.find(c=>c.isActive).rank.name+'.png'"
@@ -56,7 +57,7 @@
                              :to="{ name: 'admin', params:{ name: 'news' }}"/>
             </v-list-group>
             <v-list-item v-if="isAuthenticated" prepend-icon="mdi-logout" title="Logout" @click="submit"></v-list-item>
-        </v-list>
+        </v-list>-->
     </v-navigation-drawer>
 </template>
 <script lang="ts">
