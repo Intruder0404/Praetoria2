@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Order;
 use App\Models\OrderStatus;
 use App\Models\Product;
 use App\Models\User\User;
