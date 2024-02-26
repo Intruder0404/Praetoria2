@@ -1,15 +1,15 @@
 <template>
     <v-navigation-drawer
     >
-<!--        <v-list>
+        <v-list>
             <v-list-item
                 v-if="user!==undefined"
                 :prepend-avatar="'/rank/'+user.characters.find(c=>c.isActive).rank.name+'.png'"
                 :title="user.username"
             >
             </v-list-item>
-        </v-list>-->
-<!--        <v-divider></v-divider>
+        </v-list>
+        <v-divider></v-divider>
 
         <v-list density="compact" nav>
             <v-list-item prepend-icon="mdi-account" title="User Account"
@@ -56,7 +56,7 @@
                              :to="{ name: 'admin', params:{ name: 'news' }}"/>
             </v-list-group>
             <v-list-item v-if="isAuthenticated" prepend-icon="mdi-logout" title="Logout" @click="submit"></v-list-item>
-        </v-list>-->
+        </v-list>
     </v-navigation-drawer>
 </template>
 <script lang="ts">
