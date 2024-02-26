@@ -12,7 +12,6 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->renameColumn('fk_type', 'type_id');
             $table->dropColumn('rank_id');
         });
     }

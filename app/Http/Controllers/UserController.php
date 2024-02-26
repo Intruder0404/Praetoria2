@@ -12,13 +12,7 @@ class UserController extends BaseController
 {
     public function getUserByIdAndChildren($id, $children): User
     {
-        $user = User::where('id',$id)->with($children)->first();
-        foreach ($user->attributeValues as &$attributeValue) {
-            if ($attributeValue->type->type === 'integer') {
-                $attributeValue->value->value = (int)$attributeValue->value->value;
-            }
-        }
-        return $user;
+        return User::where('id',$id)->with($children)->first();;
     }
 
     public function getAllUsers(): Collection|array
