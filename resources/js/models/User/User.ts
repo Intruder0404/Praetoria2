@@ -10,8 +10,6 @@ export interface IUser {
   last_name?: string;
   email?: string;
   type?: number;
-  attributes: UserAttribute[];
-  attribute_values: UserAttributeValue[];
   characters: any[];
   user_rank?: Rank;
   user_type?: Type;
@@ -24,8 +22,6 @@ export class User implements IUser {
   last_name?: string;
   email?: string;
   type?: number;
-  attributes: UserAttribute[];
-  attribute_values: UserAttributeValue[];
   characters: any[];
   user_rank?: Rank;
   user_type?: Type;
@@ -38,8 +34,6 @@ export class User implements IUser {
     last_name?: string,
     type?: number,
     email?: string,
-    attributes?: UserAttribute[],
-    attribute_values?: UserAttributeValue[],
     characters: any[];
     user_rank?: Rank,
     user_type?: Type,
@@ -51,8 +45,6 @@ export class User implements IUser {
     this.last_name = user.last_name ? user.last_name : '';
     this.type = user.type ? user.type : null;
     this.email = user.email ? user.email : '';
-    this.attributes = user.attributes ? user.attributes : [];
-    this.attribute_values = user.attribute_values ? user.attribute_values : [];
     this.characters = user.characters ? user.characters : [];
     this.user_rank = user.user_rank ? new Rank(user.user_rank) : null;
     this.user_type = user.user_type ? new Type(user.user_type) : null;

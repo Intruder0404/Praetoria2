@@ -23,6 +23,13 @@ export const charactersStore = defineStore('characters', {
                     this.loading = false;
                 })
         },
+        async add(character) {
+            alert(character);
+            this.loading = true;
+            const {data} = await axios.post('character/add', {character:character});
+            this.loading = false;
+            return data.data;
+        },
     },
     getters: {
         isOptionsLoading(state) {

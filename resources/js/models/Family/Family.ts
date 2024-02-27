@@ -4,37 +4,35 @@ export interface IFamily {
   id: number;
   name?: string;
   type?: string;
-  isActive: boolean;
+  isActive?: boolean;
   createdAt?: Date;
   updatedAt?: Date | null;
-  attribute_values: FamilyAttributeValue[];
 }
 
 export class Family implements IFamily {
   id: number;
   name?: string;
   type?: string;
-  isActive: boolean;
-  createdAt: Date;
-  updatedAt: Date | null;
-  attribute_values: FamilyAttributeValue[];
+  isActive?: boolean;
+  createdAt?: Date;
+  updatedAt?: Date | null;
 
   constructor(
-    id: number,
-    name: string,
-    type: string,
-    isActive: boolean,
-    createdAt: Date,
-    updatedAt: Date | null,
-    attribute_values: FamilyAttributeValue[]
+      family:{
+          id?: number,
+          name?: string,
+          type?: string,
+          isActive?: boolean,
+          createdAt?: Date,
+          updatedAt?: Date | null,
+      }
   ) {
-    this.id = id ? id : 0;
-    this.name = name ? name : '';
-    this.type = type ? type : '';
-    this.isActive = isActive ? isActive : false;
-    this.createdAt = createdAt ? createdAt : new Date();
-    this.updatedAt = updatedAt ? updatedAt : null;
-    this.attribute_values = attribute_values ? attribute_values : [];
+    this.id = family.id ? family.id : 0;
+    this.name = family.name ? family.name : '';
+    this.type = family.type ? family.type : '';
+    this.isActive = family.isActive ? family.isActive : false;
+    this.createdAt = family.createdAt ? family.createdAt : new Date();
+    this.updatedAt = family.updatedAt ? family.updatedAt : null;
   }
 
 }

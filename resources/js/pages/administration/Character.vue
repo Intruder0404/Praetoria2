@@ -5,6 +5,9 @@
         </v-card-title>
         <v-card-text>
             <div class="d-flex flex-wrap justify-space-around" v-if="!selectedCharacter">
+                <v-btn @click="createCharacter">
+                    new character
+                </v-btn>
                 <v-card
                     class="v-col-2" v-for="(character,idx) in user.characters"
                     :key="idx"
@@ -41,9 +44,12 @@
                         </v-img>
                     </div>
                     <div class="v-col-4">
+                        <v-text-field v-model="selectedCharacter.name">
+
+                        </v-text-field>
                         <v-autocomplete
                             label="famille"
-                            :items="getOptions.families"
+                            :items="options.families"
                             item-title="name"
                             return-object
                             v-model="selectedCharacter.family"
@@ -51,7 +57,7 @@
                         </v-autocomplete>
                         <v-autocomplete
                             label="religion"
-                            :items="getOptions.religions"
+                            :items="options.religions"
                             item-title="name"
                             return-object
                             v-model="selectedCharacter.religion"
@@ -59,7 +65,7 @@
                         </v-autocomplete>
                         <v-autocomplete
                             label="rank"
-                            :items="getOptions.ranks"
+                            :items="options.ranks"
                             item-title="name"
                             return-object
                             v-model="selectedCharacter.rank"
@@ -69,7 +75,7 @@
                 </v-card-text>
                 <v-card-actions>
                     <v-btn color="surface-variant" variant="text" icon="mdi-check"
-                           @click="updateSelectedCharacter"></v-btn>
+                           @click="selectedCharacter.id===0?addNewCharacter():updateSelectedCharacter()"></v-btn>
 
                     <v-btn color="surface-variant" variant="text" icon="mdi-cancel"
                            @click="cancelCharacterChange"></v-btn>
@@ -84,6 +90,7 @@ import {mapActions, mapState} from "pinia";
 import {authStore} from "@/store/auth";
 import {optionsStore} from "@/store/options";
 import {charactersStore} from "@/store/characters";
+import {Character} from "../../models/Character/Character";
 
 export default {
     name: "App",
@@ -98,27 +105,36 @@ export default {
     },
     computed: {
         ...mapState(authStore, ['user']),
-        ...mapState(optionsStore, ['getOptions']),
+        ...mapState(optionsStore, ['options']),
     },
     methods: {
-        ...mapActions(charactersStore, ['update']),
+        ...mapActions(charactersStore, ['add','update']),
+        createCharacter(){
+            let newChar = new Character();
+            newChar.id = 0;
+            newChar.user_id = this.user.id;
+            newChar.name = '';
+            newChar.rank = this.options.ranks.find(r=>r.id=1);
+            this.selectedCharacter = newChar;
+        },
+        addNewCharacter(){
+            this.add(this.selectedCharacter).then((newCharacter)=>{
+                this.options.characters.push(newCharacter);
+                this.user.characters.push(newCharacter);
+                this.selectedCharacter = null;
+            });
+        },
         updateSelectedCharacter() {
             this.update(this.selectedCharacter).then(()=>{
-                let index = this.getOptions.characters.findIndex(c=>c.id === this.selectedCharacter.id);
-                this.getOptions.characters[index] = this.selectedCharacter;
+                let index = this.options.characters.findIndex(c=>c.id === this.selectedCharacter.id);
+                this.options.characters[index] = this.selectedCharacter;
                 this.selectedCharacter = null;
             })
         },
         changeCharacter(newChar) {
             this.selectedCharacter = newChar
         },
-        changeRank(rank) {
-            this.selectedCharacter.rank = rank
-        },
         cancelCharacterChange() {
-            /*let index = this.characters.findIndex(c=>c.id === this.selectedCharacter.id);
-            if(index != -1)
-              this.characters[index] = structuredClone(toRaw(this.selectedCharacter));*/
             this.selectedCharacter = null;
         },
         ...mapActions(charactersStore, ['getCharactersByUser', 'updateCharacter'])

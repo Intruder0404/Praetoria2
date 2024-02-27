@@ -7,10 +7,12 @@ import {Kingdom} from "@/models/Kingdom/Kingdom";
 import {Guild} from "@/models/Guild/Guild";
 import {Family} from "@/models/Family/Family";
 import {User} from "@/models/User/User";
+import {Character} from "../models/Character/Character";
 
 export const optionsStore = defineStore('options', {
   state: () => ({
     options: {
+      characters: Array<Character>(),
       religions: Array<Religion>(),
       kingdoms: Array<Kingdom>(),
       guilds: Array<Guild>(),
