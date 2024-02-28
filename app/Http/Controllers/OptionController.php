@@ -32,7 +32,7 @@ class OptionController
             'userTypes'=>UserType::all(),
             'attributes'=>Attribute::all(),
             'ranks'=>Rank::all(),
-            'characters'=>Character::with(['rank','family','religion'])->get(),
+            'characters'=>Character::with(['rank','family','religion','family.paterFamilia'])->get(),
             'data_type'=>DataType::all(),
             'logos'=>$images
         ];

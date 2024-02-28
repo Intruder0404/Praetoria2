@@ -94,7 +94,7 @@ export default {
     },
     props:{
         family:{
-            type:Family
+            type:{}
         }
     },
     data() {
