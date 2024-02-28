@@ -17,8 +17,8 @@
                          to="/account"></v-list-item>
             <v-list-item prepend-icon="mdi-account-child-outline" title="Personnages(under construction)" value="personnage"
                          to="/character"></v-list-item>
-            <v-list-item v-if="user.characters.find(c => c.isActive).family.pater_familia.id === user.id" prepend-icon="mdi-human-male-female-child" title="Family(under construction)" value="family"
-                         to="/family"></v-list-item>
+<!--            <v-list-item v-if="user.characters.find(c => c.isActive).family.pater_familia.id === user.id" prepend-icon="mdi-human-male-female-child" title="Family(under construction)" value="family"
+                         to="/family"></v-list-item>-->
             <v-list-item prepend-icon="mdi-home-group" title="Reservation(under construction)" value="reservation"
                          to="/reservation"></v-list-item>
             <v-list-group open-on-hover v-if="user.type.id === 2" prepend-icon="mdi-account-group"
