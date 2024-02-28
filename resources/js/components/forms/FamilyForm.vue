@@ -40,6 +40,14 @@
                             label="Animal"
                         ></v-text-field>
                     </v-col>
+                    <v-col cols="12" sm="6" md="6">
+                        <v-select class="d-flex justify-center" variant="outlined"
+                                  v-model="family.pater_familia.id" :items="options.characters"
+                                  item-title="name"
+                                  item-value="id"
+                                  label="Pater Familia">
+                        </v-select>
+                    </v-col>
                     <v-col cols="12">
                         <v-textarea
                             v-model="family.description"
@@ -113,6 +121,8 @@ export default {
         updateFamily() {
             this.update(this.family)
                 .then(this.fetchAll().then(()=>{
+                    this.$root.vtoast.color = 'success'
+                    this.$root.vtoast.show({message: 'Family saved'})
                     this.$emit('close');
                 }));
         },

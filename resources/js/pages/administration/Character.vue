@@ -1,13 +1,11 @@
 <template>
     <v-card class="px-4">
         <v-card-title>
-            Account Modification
+            Character management
         </v-card-title>
         <v-card-text>
             <div class="d-flex flex-wrap justify-space-around" v-if="!selectedCharacter">
-                <v-btn @click="createCharacter">
-                    new character
-                </v-btn>
+
                 <v-card
                     class="v-col-2" v-for="(character,idx) in user.characters"
                     :key="idx"
@@ -29,6 +27,23 @@
                         <v-btn color="surface-variant" variant="text" icon="mdi-cog-outline"
                                @click="changeCharacter(character)"></v-btn>
                     </v-card-actions>
+                </v-card>
+                <v-card
+                    class="v-col-2"
+                    :key="idx"
+                    color="primary"
+                >
+                    <v-card-text class="h-100">
+                        <v-btn
+                            color="primary"
+                            hover
+                            class="w-100 h-100"
+                        >
+                            <v-icon @click="createCharacter">
+                                mdi-plus
+                            </v-icon>
+                        </v-btn>
+                    </v-card-text>
                 </v-card>
             </div>
             <v-card v-else>
