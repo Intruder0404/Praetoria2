@@ -43,7 +43,7 @@
                 class="me-2"
                 @click="editItem(item)"
             >
-                mdi-pencil9
+                mdi-pencil
             </v-icon>
             <v-icon
                 size="small"
