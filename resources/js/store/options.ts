@@ -21,6 +21,7 @@ export const optionsStore = defineStore('options', {
       attributes: Array<Attribute>(),
       userTypes: [],
       ranks: [],
+      logos: [],
     },
     optionLoading: false
   }),

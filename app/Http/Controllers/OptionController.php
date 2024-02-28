@@ -22,18 +22,19 @@ class OptionController
     }
     public function getAllOptions(): array
     {
-        event(new TestEvent());
+        $images = glob('logo/*');
         return [
             'religions'=>Religion::all(),
             'kingdoms'=>Kingdom::all(),
             'guilds'=>Guild::all(),
-            'families'=>Family::all(),
-            'users'=>User::with(['characters', 'type'])->get(),
+            'families'=>Family::with(['paterFamilia'])->get(),
+            'users'=>User::with(['characters', 'type','characters.family','characters.family.paterFamilia'])->get(),
             'userTypes'=>UserType::all(),
             'attributes'=>Attribute::all(),
             'ranks'=>Rank::all(),
-            'characters'=>Character::with(['rank','family'])->get(),
+            'characters'=>Character::with(['rank','family','religion'])->get(),
             'data_type'=>DataType::all(),
+            'logos'=>$images
         ];
     }
 }

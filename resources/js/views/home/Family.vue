@@ -14,7 +14,7 @@
             :key="idx"
             color="primary"
             :title="family.name"
-            :style="{height:'300px',width:'300px',backgroundSize:'300px 300px',backgroundImage:'url('+'logo/'+family.logo+')'}"
+            :style="{height:'300px',width:'300px',backgroundSize:'300px 300px',backgroundImage:'url('+family.logo+')'}"
             link
           >
             <template>

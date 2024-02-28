@@ -6,10 +6,12 @@
 
 namespace App\Models\Family;
 
+use App\Models\User\User;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 
 /**
  * Class Family
@@ -28,7 +30,12 @@ class Family extends Model
 
     protected $fillable = [
         'name',
-        'isActive'
+        'isActive',
+        'user_id'
+    ];
+
+    protected $hidden = [
+        'user_id'
     ];
 
     /**
@@ -40,9 +47,9 @@ class Family extends Model
         'isActive' => 'boolean',
     ];
 
-    public function attributeValues(): HasMany
+    public function paterFamilia(): HasOne
     {
-        return $this->hasMany(FamilyAttributeValue::class);
+        return $this->HasOne(User::class,'id','user_id');
     }
 
 }

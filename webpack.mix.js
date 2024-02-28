@@ -1,4 +1,5 @@
 let mix = require('laravel-mix');
+const path = require('path');
 
 mix.js('src/main.ts', 'dist').setPublicPath('dist');
 
@@ -6,7 +7,7 @@ mix.webpackConfig({
     resolve: {
         extensions: ['.ts','.js', '.vue'],
         alias: {
-            '@': __dirname + '/resources'
+            '@': path.resolve(__dirname + '/resources')
         }
     }
 });

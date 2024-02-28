@@ -11,7 +11,7 @@ class CharacterController extends BaseController
         return Character::with(['attributeValues.attribute.attribute', 'attributeValues.type', 'attributeValues.value'])->get();
     }
     public function update(Character $character,Request $request){
-        $updateData = $request->request->all()['character'];
+        $updateData = $request->get('character');
         if(isset($updateData['rank']['id'])){
             $character->rank_id = $updateData['rank']['id'];
         }

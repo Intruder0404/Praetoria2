@@ -38,6 +38,11 @@ Route::middleware('auth:sanctum')->group(function () {
         Route::put('/update/{character}', [CharacterController::class, 'update'])->name('character.update');
         Route::post('/add', [CharacterController::class, 'add'])->name('character.add');
     });
+    Route::prefix('family')->group(function () {
+        Route::delete('/delete/{family}', [FamilyController::class, 'delete'])->name('family.update');
+        Route::put('/update/{family}', [FamilyController::class, 'update'])->name('family.update');
+        Route::post('/add', [FamilyController::class, 'add'])->name('family.add');
+    });
     Route::get('/religions', [ReligionController::class, 'getAllReligions'])->name('admin.religions');
     Route::get('/guilds', [GuildController::class, 'getAllGuilds'])->name('admin.guilds');
     Route::get('/kingdoms', [KingdomController::class, 'getAllKingdoms'])->name('admin.kingdoms');

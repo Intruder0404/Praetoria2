@@ -24,7 +24,6 @@ export const charactersStore = defineStore('characters', {
                 })
         },
         async add(character) {
-            alert(character);
             this.loading = true;
             const {data} = await axios.post('character/add', {character:character});
             this.loading = false;
