@@ -37,6 +37,9 @@
         <template #item.religion="{ value }">
             {{ value.name }}
         </template>
+        <template #item.family="{ value }">
+            {{ value.name }}
+        </template>
         <template #item.actions="{ item }">
             <v-icon
                 size="small"
