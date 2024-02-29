@@ -12,7 +12,7 @@
         </div>
       </template>
       <template #actions>
-        <v-btn :block="$vuetify.display.xs" size="large" style="background: rgba(236,73,73,0.3)" :to="'/Merchants'">En savoir plus</v-btn>
+        <v-btn :block="$vuetify.display.xs" size="large" variant="flat" color="primary"  :to="'/Merchants'">En savoir plus</v-btn>
       </template>
     </info-card>
   </div>
