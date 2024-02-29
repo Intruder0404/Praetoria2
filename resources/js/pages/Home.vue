@@ -1,17 +1,17 @@
 <template>
-    <HomeCarousel :style="{'min-height': $vuetify.display.xs?'140vh':'140vh'}"/>
+    <HomeCarousel :style="{'min-height': '140vh'}"/>
     <v-spacer></v-spacer>
-    <Guild :style="{'height': $vuetify.display.xs?'50vh':'50vh'}"/>
+    <Guild :style="{'min-height':'50vh'}"/>
     <v-spacer></v-spacer>
-    <Family :style="{'height': $vuetify.display.xs?'auto':'50vh'}"/>
+    <Family :style="{'min-height':'50vh'}"/>
     <v-spacer></v-spacer>
-    <Politics :style="{'height': $vuetify.display.xs?'auto':'50vh'}"/>
+    <Politics :style="{'min-height':'50vh'}"/>
     <v-spacer></v-spacer>
-    <Religion :style="{'height': $vuetify.display.xs?'auto':'50vh'}"/>
+    <Religion :style="{'min-height':'50vh'}"/>
     <v-spacer></v-spacer>
-    <Merchants :style="{'height': $vuetify.display.xs?'auto':'50vh'}"/>
+    <Merchants :style="{'min-height':'50vh'}"/>
     <v-spacer></v-spacer>
-    <Bicolline :style="{'height': $vuetify.display.xs?'auto':'50vh'}"/>
+    <Bicolline :style="{'min-height':'50vh'}"/>
 </template>
 
 <script lang="ts">
