@@ -46,7 +46,8 @@ class AuthController extends BaseController
                 'last_name' => $request->last_name,
                 'username' => $request->username,
                 'email' => $request->email,
-                'password' => Hash::make($request->password)
+                'password' => Hash::make($request->password),
+                'isActive' => 0
             ], 201);
 
             return response()->json([

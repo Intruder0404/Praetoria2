@@ -45,70 +45,21 @@
                     </v-card-text>
                 </v-card>
             </div>
-            <v-card v-else>
-                <v-card-title
-                >
-                    {{ selectedCharacter.name }}
-                </v-card-title>
-                <v-card-text class="d-flex flex-row">
-                    <div class="v-col-4">
-                        {{ selectedCharacter.rank.name }}
-                        <v-img width="300" :src="'/rank/'+selectedCharacter.rank.name+'.png'">
-
-                        </v-img>
-                    </div>
-                    <div class="v-col-4">
-                        <v-text-field v-model="selectedCharacter.name">
-
-                        </v-text-field>
-                        <v-autocomplete
-                            label="famille"
-                            :items="options.families"
-                            item-title="name"
-                            return-object
-                            v-model="selectedCharacter.family"
-                        >
-                        </v-autocomplete>
-                        <v-autocomplete
-                            label="religion"
-                            :items="options.religions"
-                            item-title="name"
-                            return-object
-                            v-model="selectedCharacter.religion"
-                        >
-                        </v-autocomplete>
-                        <v-autocomplete
-                            label="rank"
-                            :items="options.ranks"
-                            item-title="name"
-                            return-object
-                            v-model="selectedCharacter.rank"
-                        >
-                        </v-autocomplete>
-                    </div>
-                </v-card-text>
-                <v-card-actions>
-                    <v-btn color="surface-variant" variant="text" icon="mdi-check"
-                           @click="selectedCharacter.id===0?addNewCharacter():updateSelectedCharacter()"></v-btn>
-
-                    <v-btn color="surface-variant" variant="text" icon="mdi-cancel"
-                           @click="cancelCharacterChange"></v-btn>
-                </v-card-actions>
-            </v-card>
+            <character-form v-else @close="selectedCharacter=null" :character="selectedCharacter"></character-form>
         </v-card-text>
     </v-card>
 </template>
 <script lang="ts">
-import {toRaw} from "vue";
 import {mapActions, mapState} from "pinia";
-import {authStore} from "@/store/auth";
-import {optionsStore} from "@/store/options";
-import {charactersStore} from "@/store/characters";
-import {Character} from "../../models/Character/Character";
+import {optionsStore,characterStore,authStore} from "@/store";
+import {Character} from "@/models/Character/Character";
+import {CharacterForm} from "@/components";
 
 export default {
     name: "App",
-    components: {},
+    components: {
+        CharacterForm
+    },
     data() {
         return {
             selectedCharacter: null,
@@ -122,7 +73,7 @@ export default {
         ...mapState(optionsStore, ['options']),
     },
     methods: {
-        ...mapActions(charactersStore, ['add','update']),
+        ...mapActions(characterStore, ['add','update']),
         createCharacter(){
             let newChar = new Character();
             newChar.id = 0;

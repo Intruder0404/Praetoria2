@@ -1,40 +1,36 @@
-import {KingdomAttributeValue} from "@/models/Kingdom";
-
 export interface IKingdom {
-  id: number;
+  id?: number;
   name?: string;
   type?: string;
-  isActive: boolean;
+  isActive?: boolean;
   createdAt?: Date;
   updatedAt?: Date | null;
-  attributeValues: KingdomAttributeValue[];
 }
 
 export class Kingdom implements IKingdom {
-  id: number;
+  id?: number;
   name?: string;
   type?: string;
-  isActive: boolean;
-  createdAt: Date;
-  updatedAt: Date | null;
-  attributeValues: KingdomAttributeValue[];
+  isActive?: boolean;
+  createdAt?: Date;
+  updatedAt?: Date | null;
 
   constructor(
-    id: number,
-    name: string,
-    type: string,
-    isActive: boolean,
-    createdAt: Date,
-    updatedAt: Date | null,
-    attributeValues: KingdomAttributeValue[]
+      kingdom?:{
+          id?: number,
+          name?: string,
+          type?: string,
+          isActive?: boolean,
+          createdAt?: Date,
+          updatedAt?: Date | null
+      }
   ) {
-    this.id = id ? id : 0;
-    this.name = name ? name : '';
-    this.type = type ? type : '';
-    this.isActive = isActive ? isActive : false;
-    this.createdAt = createdAt ? createdAt : new Date();
-    this.updatedAt = updatedAt ? updatedAt : null;
-    this.attributeValues = attributeValues ? attributeValues : [];
+    this.id = kingdom.id ? kingdom.id : 0;
+    this.name = kingdom.name ? kingdom.name : '';
+    this.type = kingdom.type ? kingdom.type : '';
+    this.isActive = kingdom.isActive ? kingdom.isActive : false;
+    this.createdAt = kingdom.createdAt ? kingdom.createdAt : new Date();
+    this.updatedAt = kingdom.updatedAt ? kingdom.updatedAt : null;
   }
 
 }

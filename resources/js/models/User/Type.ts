@@ -10,15 +10,17 @@ export class Type implements IType {
   isActive?: boolean;
 
   constructor(
-    type: {
+    type?: {
       id?: number,
       name?: string,
       isActive?: boolean,
     }
   ) {
-    this.id = type.id ? type.id : 0;
-    this.name = type.name ? type.name : '';
-    this.isActive = type.isActive ? type.isActive : null;
+      if(type){
+          this.id = type.id ? type.id : 0;
+          this.name = type.name ? type.name : '';
+          this.isActive = type.isActive ? type.isActive : null;
+      }
   }
 
 }

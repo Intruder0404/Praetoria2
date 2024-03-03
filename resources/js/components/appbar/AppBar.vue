@@ -1,6 +1,5 @@
 <template>
     <v-app-bar
-        style="left:1%;top:10px;width: 98%;z-index: 9999"
         class="ma-2"
         flat
         density="comfortable"
@@ -93,11 +92,9 @@
                     </v-icon>
                     Account Settings
                 </v-list-item>
-                <LoginDialog :activator="'list-item'" v-if="!isAuthenticated"/>
-                <v-list-item @click="submit">
-                    <v-icon icon="mdi-logout">
-
-                    </v-icon>
+                <login-dialog :activator="'list-item'" v-if="!isAuthenticated"/>
+                <register-dialog :activator="'list-item'"/>
+                <v-list-item @click="submit" v-if="isAuthenticated">
                     Logout
                 </v-list-item>
             </v-list>
@@ -109,9 +106,11 @@
 import {mapActions, mapState} from "pinia";
 import {authStore} from "@/store/auth";
 import {LoginDialog, ThemeButton, LanguageButton} from "@/components";
+import RegisterDialog from "@/components/dialog/auth/RegisterDialog.vue";
 
 export default {
     components: {
+        RegisterDialog,
         LanguageButton,
         ThemeButton,
         LoginDialog

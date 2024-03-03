@@ -12,7 +12,8 @@ class CharacterController extends BaseController
     }
     public function update(Character $character,Request $request){
         $updateData = $request->get('character');
-        if(isset($updateData['rank']['id'])){
+        $character->fill($updateData);
+        /*if(isset($updateData['rank']['id'])){
             $character->rank_id = $updateData['rank']['id'];
         }
         if(isset($updateData['religion']['id'])){
@@ -20,7 +21,7 @@ class CharacterController extends BaseController
         }
         if(isset($updateData['family']['id'])){
             $character->family_id = $updateData['family']['id'];
-        }
+        }*/
         $character->save();
         return $this->sendResponse($character, 'character.');
     }

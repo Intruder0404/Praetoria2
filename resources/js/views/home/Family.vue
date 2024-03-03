@@ -7,7 +7,7 @@
         </div>
       </template>
       <template #body>
-        <v-card-text class="d-flex flex-wrap justify-space-around">
+        <v-card-text class="d-flex flex-wrap justify-center">
           <v-card
             class=""
             v-for="(family,idx) in options.families"

@@ -1,9 +1,8 @@
 // @ts-ignore
-import {UserAttribute, UserAttributeValue} from "@/models";
 import {Rank} from "@/models/User/Rank";
-import {Type} from "@/models/User/Type";
-import {Family} from "../Family/Family";
-import {Religion} from "../Religion/Religion";
+import {Family} from "@/models//Family/Family";
+import {Religion} from "@/models//Religion/Religion";
+import {Guild} from "@/models/Guild/Guild";
 
 export interface ICharacter {
     id: number;
@@ -16,31 +15,37 @@ export interface ICharacter {
     family_id?: number;
     religion?: Religion;
     religion_id?: number;
+    guild?: Guild;
+    guild_id?: number;
 }
 
 export class Character implements ICharacter {
     id: number;
     user_id: number;
     name?: string;
-    isActive?: string;
+    isActive?: boolean;
     rank?: Rank;
     rank_id?: number;
     family?: Family;
     family_id?: number;
     religion?: Religion;
     religion_id?: number;
+    guild?: Guild;
+    guild_id?: number;
 
     constructor(character?: {
         id?: number,
         user_id?: number,
         name?: string,
-        isActive?: string,
+        isActive?: boolean,
         rank?: Rank,
         rank_id?: number,
         family?: Family,
         family_id?: number,
         religion?: Religion,
-        religion_id?: number
+        religion_id?: number,
+        guild?: Guild,
+        guild_id?: number
     }) {
         if(character){
             this.id = character.id ? character.id : 0;
@@ -53,6 +58,8 @@ export class Character implements ICharacter {
             this.family_id = character.rank_id ? character.family_id: null;
             this.rank = character.rank ? new Rank(character.rank) : null;
             this.rank_id = character.rank_id ? character.rank_id: null;
+            this.guild = character.guild ? new Guild(character.guild) : null;
+            this.guild_id = character.rank_id ? character.rank_id: null;
         }
     }
 
