@@ -113,30 +113,19 @@
 import {mapActions, mapState} from "pinia";
 import vtoast from "@/components/stack/vtoast.vue";
 import {optionsStore} from "@/store/options";
-import {familyStore} from "@/store/family";
 import {validationStore} from "@/store/validation";
-import {Family} from "@/models/Family/Family";
-<<<<<<< HEAD:resources/js/components/forms/FamilyForm.vue
-import {authStore} from "@/store/auth";
-import _ from "lodash";
-=======
 import {guildStore} from "@/store/guild";
->>>>>>> ee8b7ff9dbdac153d25a934953b78d7e6fbb26e1:resources/js/components/forms/admin/GuildForm.vue
+import {authStore} from "@/store";
 
 export default {
     name: "GuildForm",
     components: {
         vtoast,
     },
-<<<<<<< HEAD:resources/js/components/forms/FamilyForm.vue
-    props: {
-        family: {
-            type: {}
-=======
+
     props:{
         guild:{
             type:{}
->>>>>>> ee8b7ff9dbdac153d25a934953b78d7e6fbb26e1:resources/js/components/forms/admin/GuildForm.vue
         }
     },
     data() {
@@ -152,15 +141,7 @@ export default {
         ...mapState(authStore, ['user'])
     },
     methods: {
-<<<<<<< HEAD:resources/js/components/forms/FamilyForm.vue
-        ...mapActions(optionsStore, {fetchAll: 'fetchAll'}),
-        ...mapActions(familyStore, {update: 'update'}),
-        updateFamily() {
-            this.update(this.modifiedFamily)
-                .then(this.fetchAll().then(() => {
-                    this.user.characters.find(c => c.isActive).family = this.modifiedFamily;
-                    this.$root.vtoast.show({message: 'Family saved', color: 'success'});
-=======
+
         ...mapActions(optionsStore, {fetchAll:'fetchAll'}),
         ...mapActions(guildStore, {update:'update'}),
         updateGuild() {
@@ -168,7 +149,6 @@ export default {
                 .then(this.fetchAll().then(()=>{
                     this.$root.vtoast.color = 'success'
                     this.$root.vtoast.show({message: 'Guild saved'})
->>>>>>> ee8b7ff9dbdac153d25a934953b78d7e6fbb26e1:resources/js/components/forms/admin/GuildForm.vue
                     this.$emit('close');
                 }));
         },
