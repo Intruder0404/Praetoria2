@@ -47,16 +47,24 @@
                     type="password"
                     required
                 ></v-text-field>
-
+            </v-card-text>
+            <v-card-actions class="d-flex justify-center">
                 <v-btn
                     type="submit"
                     color="primary"
-                    block
-                    class="mt-2"
+                    class="v-col-10 mb-2"
+                    variant="flat"
+                    size="xx-large"
                 >
+                    <template #prepend>
+                        <v-avatar>
+                            <v-img src="/public/logo/praetoria-1-transparent.png">
+                            </v-img>
+                        </v-avatar>
+                    </template>
                     Register
                 </v-btn>
-            </v-card-text>
+            </v-card-actions>
         </v-form>
     </v-card>
 </template>

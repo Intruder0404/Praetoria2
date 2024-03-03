@@ -35,7 +35,6 @@ class Family extends Model
     ];
 
     protected $hidden = [
-        'user_id'
     ];
 
     /**

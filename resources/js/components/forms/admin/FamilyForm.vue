@@ -34,11 +34,14 @@
                         </v-select>
                     </div>
                     <div class="v-col-6">
-                        <v-select variant="outlined"
-                                  v-model="family.pater_familia.id" :items="options.characters"
-                                  item-title="name"
-                                  item-value="id"
-                                  label="Pater Familia">
+                        <v-select
+                            variant="outlined"
+                            v-model="family.user_id" :items="options.characters"
+                            item-title="name"
+                            item-value="id"
+                            label="Pater Familia"
+                            clearable
+                        >
                         </v-select>
                     </div>
                     <v-textarea

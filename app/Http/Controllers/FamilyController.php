@@ -20,10 +20,11 @@ class FamilyController extends BaseController
     public function update(Family $family, Request $request): JsonResponse
     {
         $updateData = $request->get('family');
-        $family->name = $updateData['name']??'';
+        $family->fill($updateData);
+        /*$family->name = $updateData['name']??'';
         $family->animal = $updateData['animal']??'';
         $family->description = $updateData['description']??'';
-        $family->logo = $updateData['logo'];
+        $family->logo = $updateData['logo'];*/
         $family->save();
         return $this->sendResponse($family, 'family updated');
     }

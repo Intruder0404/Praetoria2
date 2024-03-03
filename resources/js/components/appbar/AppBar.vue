@@ -1,6 +1,5 @@
 <template>
     <v-app-bar
-        style="z-index: 9999"
         class="ma-2"
         flat
         density="comfortable"
