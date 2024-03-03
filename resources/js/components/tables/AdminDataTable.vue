@@ -2,7 +2,7 @@
     <v-data-table
         :headers="headers"
         class="elevation-1"
-        :items="newOptions[name]"
+        :items="options[name]"
         :loading="optionLoading"
     >
         <template #top>
@@ -71,6 +71,7 @@ import DeleteDialog from "@/components/dialog/admin/DeleteDialog.vue";
 import UpdateDialog from "@/components/dialog/admin/UpdateDialog.vue";
 import {optionsStore} from "@/store/options";
 import {defineComponent} from "vue";
+import _ from "lodash";
 
 export default defineComponent({
     name: "admin",
@@ -121,15 +122,14 @@ export default defineComponent({
             }
         },
         editItem(item) {
-            this.editedIndex = this.newOptions[this.name].indexOf(item);
-            this.editedItem = Object.assign({}, item);
+            this.editedItem = _.cloneDeep(this.options[this.name].find((option)=>option.id===item.id));
             this.dialogUpdate = true;
         },
 
         deleteItem(item) {
-            this.editedIndex = this.newOptions[this.name].indexOf(item);
+            /*this.editedIndex = this.newOptions[this.name].indexOf(item);
             this.editedItem = Object.assign({}, item);
-            this.dialogDelete = true;
+            this.dialogDelete = true;*/
         }
     },
     computed: {

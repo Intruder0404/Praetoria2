@@ -4,8 +4,7 @@
     >
        <v-list>
             <v-list-item
-                v-if="user!==undefined"
-                :prepend-avatar="'/rank/'+user.characters.find(c=>c.isActive).rank.name+'.png'"
+                :prepend-avatar="user.characters.find(c=>c.isActive)?'/rank/'+user.characters.find(c=>c.isActive).rank.name+'.png':''"
                 :title="user.username"
             >
             </v-list-item>
@@ -17,7 +16,7 @@
                          to="/account"></v-list-item>
             <v-list-item prepend-icon="mdi-account-child-outline" title="Personnages(under construction)" value="personnage"
                          to="/character"></v-list-item>
-            <v-list-item v-if="user.characters.find(c => c.isActive).family.pater_familia.id === user.id" prepend-icon="mdi-human-male-female-child" title="Family(under construction)" value="family"
+            <v-list-item prepend-icon="mdi-human-male-female-child" title="Family(under construction)" value="family"
                          to="/family"></v-list-item>
             <v-list-item prepend-icon="mdi-home-group" title="Reservation(under construction)" value="reservation"
                          to="/reservation"></v-list-item>

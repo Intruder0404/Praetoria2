@@ -30,7 +30,6 @@
                 </v-card>
                 <v-card
                     class="v-col-2"
-                    :key="idx"
                     color="primary"
                 >
                     <v-card-text class="h-100">
@@ -151,8 +150,7 @@ export default {
         },
         cancelCharacterChange() {
             this.selectedCharacter = null;
-        },
-        ...mapActions(charactersStore, ['getCharactersByUser', 'updateCharacter'])
+        }
     }
 };
 </script>
