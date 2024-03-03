@@ -1,7 +1,7 @@
 import {FamilyAttributeValue} from "@/models/Family/FamilyAttributeValue";
 
 export interface IFamily {
-    id: number;
+    id?: number;
     name?: string;
     type?: string;
     pater_familia?: string;
@@ -11,17 +11,16 @@ export interface IFamily {
 }
 
 export class Family implements IFamily {
-    id: number;
+    id?: number;
     name?: string;
     type?: string;
     pater_familia?: string;
     isActive?: boolean;
     createdAt?: Date;
     updatedAt?: Date | null;
-    action?:null;
 
     constructor(
-        family: {
+        family?: {
             id?: number,
             name?: string,
             type?: string,
@@ -31,13 +30,15 @@ export class Family implements IFamily {
             updatedAt?: Date | null,
         }
     ) {
-        this.id = family.id ? family.id : 0;
-        this.name = family.name ? family.name : '';
-        this.type = family.type ? family.type : '';
-        this.pater_familia = family.pater_familia ? family.pater_familia : '';
-        this.isActive = family.isActive ? family.isActive : false;
-        this.createdAt = family.createdAt ? family.createdAt : new Date();
-        this.updatedAt = family.updatedAt ? family.updatedAt : null;
+        if(family){
+            this.id = family.id ? family.id : 0;
+            this.name = family.name ? family.name : '';
+            this.type = family.type ? family.type : '';
+            this.pater_familia = family.pater_familia ? family.pater_familia : '';
+            this.isActive = family.isActive ? family.isActive : false;
+            this.createdAt = family.createdAt ? family.createdAt : new Date();
+            this.updatedAt = family.updatedAt ? family.updatedAt : null;
+        }
     }
 
 }

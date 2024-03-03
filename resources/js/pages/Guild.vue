@@ -13,7 +13,7 @@
                 </template>
                 <template #body>
                   <div class="text-sm-h5 text-h5 text-xs-h5 text-md-h4 text-lg-h5">
-                    {{ options.guilds?options.guilds[0].attribute_values.find(av => av.attribute.name === 'Description').value.value:'' }}
+                    {{ options.guilds?options.guilds[0].description:'' }}
                   </div>
                 </template>
               </info-card>

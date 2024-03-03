@@ -1,7 +1,13 @@
 <template>
-    <div class="d-flex align-center justify-center" style="height: 100vh">
-        <v-sheet width="400" class="mx-auto">
-            <v-form fast-fail @submit.prevent="submit">
+    <v-card
+        width="400"
+        class="mx-auto"
+    >
+        <v-card-title>
+            Registration
+        </v-card-title>
+        <v-form fast-fail @submit.prevent="submit">
+            <v-card-text>
                 <v-text-field
                     v-model="first_name"
                     label="First name"
@@ -47,10 +53,12 @@
                     color="primary"
                     block
                     class="mt-2"
-                >Register</v-btn>
-            </v-form>
-        </v-sheet>
-    </div>
+                >
+                    Register
+                </v-btn>
+            </v-card-text>
+        </v-form>
+    </v-card>
 </template>
 <script lang="ts">
 import {mapActions, mapState} from "pinia";
@@ -69,15 +77,20 @@ export default {
             confirmPassword: ''
         };
     },
-    computed:{
-        ...mapState(validationStore,['rules'])
+    computed: {
+        ...mapState(validationStore, ['rules'])
     },
     methods: {
         ...mapActions(authStore, ["register"]),
         async submit() {
-            console.log(this.password === this.confirmPassword);
             if (this.password === this.confirmPassword) {
-                await this.register({first_name:this.first_name,last_name:this.last_name,username:this.username,email:this.email, password:this.password});
+                await this.register({
+                    first_name: this.first_name,
+                    last_name: this.last_name,
+                    username: this.username,
+                    email: this.email,
+                    password: this.password
+                });
                 this.$refs.form.reset();
             } else {
                 this.errorMessage = "password did not match"

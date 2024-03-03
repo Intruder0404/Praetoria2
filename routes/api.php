@@ -8,7 +8,6 @@ use App\Http\Controllers\KingdomController;
 use App\Http\Controllers\OptionController;
 use App\Http\Controllers\ReligionController;
 use App\Http\Controllers\UserController;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -35,6 +34,7 @@ Route::prefix('auth')->group(function () {
 Route::get('/options', [OptionController::class, 'getAllOptions'])->name('admin.options');
 Route::middleware('auth:sanctum')->group(function () {
     Route::prefix('character')->group(function () {
+        Route::delete('/delete/{character}', [CharacterController::class, 'delete'])->name('character.update');
         Route::put('/update/{character}', [CharacterController::class, 'update'])->name('character.update');
         Route::post('/add', [CharacterController::class, 'add'])->name('character.add');
     });
@@ -42,6 +42,26 @@ Route::middleware('auth:sanctum')->group(function () {
         Route::delete('/delete/{family}', [FamilyController::class, 'delete'])->name('family.update');
         Route::put('/update/{family}', [FamilyController::class, 'update'])->name('family.update');
         Route::post('/add', [FamilyController::class, 'add'])->name('family.add');
+    });
+    Route::prefix('religion')->group(function () {
+        Route::delete('/delete/{religion}', [ReligionController::class, 'delete'])->name('religion.update');
+        Route::put('/update/{religion}', [ReligionController::class, 'update'])->name('religion.update');
+        Route::post('/add', [ReligionController::class, 'add'])->name('religion.add');
+    });
+    Route::prefix('guild')->group(function () {
+        Route::delete('/delete/{guild}', [GuildController::class, 'delete'])->name('guild.update');
+        Route::put('/update/{guild}', [GuildController::class, 'update'])->name('guild.update');
+        Route::post('/add', [GuildController::class, 'add'])->name('guild.add');
+    });
+    Route::prefix('user')->group(function () {
+        Route::delete('/delete/{user}', [UserController::class, 'delete'])->name('user.update');
+        Route::put('/update/{user}', [UserController::class, 'update'])->name('user.update');
+        Route::post('/add', [UserController::class, 'add'])->name('user.add');
+    });
+    Route::prefix('kingdom')->group(function () {
+        Route::delete('/delete/{user}', [KingdomController::class, 'delete'])->name('kingdom.update');
+        Route::put('/update/{user}', [KingdomController::class, 'update'])->name('kingdom.update');
+        Route::post('/add', [KingdomController::class, 'add'])->name('kingdom.add');
     });
     Route::get('/religions', [ReligionController::class, 'getAllReligions'])->name('admin.religions');
     Route::get('/guilds', [GuildController::class, 'getAllGuilds'])->name('admin.guilds');

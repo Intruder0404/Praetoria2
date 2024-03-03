@@ -2,20 +2,30 @@
     <v-dialog v-model="active">
         <family-form @close="close" v-if="name==='families'" :family="editedItem"></family-form>
         <religion-form @close="close" v-if="name==='religions'" :religion="editedItem"></religion-form>
+        <guild-form @close="close" v-if="name==='guilds'" :guild="editedItem"></guild-form>
+        <user-form @close="close" v-if="name==='users'" :user="editedItem"></user-form>
+        <character-form @close="close" v-if="name==='characters'" :character="editedItem"></character-form>
+        <kingdom-form @close="close" v-if="name==='kingdoms'" :kingdom="editedItem"></kingdom-form>
     </v-dialog>
 </template>
 <script lang="ts">
-
-import {mapState} from "pinia";
-import {optionsStore} from "@/store/options";
-import FamilyForm from "@/components/forms/FamilyForm";
-import ReligionForm from "@/components/forms/ReligionForm.vue";
-
+import {
+    CharacterForm,
+    FamilyForm,
+    ReligionForm,
+    GuildForm,
+    UserForm,
+    KingdomForm
+} from "@/components";
 export default {
     name: "UpdateDialog",
     components: {
         FamilyForm,
-        ReligionForm
+        ReligionForm,
+        GuildForm,
+        UserForm,
+        CharacterForm,
+        KingdomForm
     },
     data() {
         return {
@@ -32,9 +42,6 @@ export default {
         close() {
             this.$emit('closeCreate');
         }
-    },
-    computed: {
-        ...mapState(optionsStore, ['options'])
     },
     watch: {
         isActive: {

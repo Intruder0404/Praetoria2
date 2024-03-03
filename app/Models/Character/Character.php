@@ -3,6 +3,7 @@
 namespace App\Models\Character;
 
 use App\Models\Family\Family;
+use App\Models\Guild\Guild;
 use App\Models\Religion\Religion;
 use App\Models\User\Rank;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -29,12 +30,10 @@ class Character extends Model
         'rank_id',
         'religion_id',
         'family_id',
+        'guild_id',
     ];
 
     protected $hidden = [
-        'rank_id',
-        'religion_id',
-        'family_id',
     ];
 
     protected $casts = [
@@ -51,5 +50,9 @@ class Character extends Model
     public function family(): HasOne
     {
         return $this->hasOne(Family::class,'id','family_id');
+    }
+    public function guild(): HasOne
+    {
+        return $this->hasOne(Guild::class,'id','guild_id');
     }
 }

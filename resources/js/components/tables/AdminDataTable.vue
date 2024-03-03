@@ -9,15 +9,13 @@
             <v-toolbar flat color="primary">
                 <v-toolbar-title>Administration</v-toolbar-title>
                 <CreateDialog @closeCreate="closeDialog('create')" :isActive="dialog"/>
-                <ManageAttributesDialog @closeCreate="closeDialog('manage-attributes')"
-                                        :isActive="dialogManageAttributes"/>
                 <DeleteDialog @closeCreate="closeDialog('delete')" :isActive="dialogDelete"/>
                 <UpdateDialog @closeCreate="closeDialog('edit')" :editedItem="editedItem"
                               :isActive="dialogUpdate"/>
             </v-toolbar>
         </template>
         <template #item.rank="{ value }">
-            {{ value.name }}
+            {{ value?value.name:'' }}
         </template>
         <template #item.characters="{ value }">
             <v-autocomplete
@@ -26,7 +24,7 @@
             ></v-autocomplete>
         </template>
         <template #item.type="{ value }">
-            {{ value.name }}
+            {{ value?value.name:'' }}
         </template>
         <template #item.pater_familia="{ value }">
             {{ value ? value.username : '' }}
@@ -34,11 +32,29 @@
         <template #item.logo="{ value }">
             <v-img width="100px" :src="'/'+value"/>
         </template>
+        <template #item.url="{ value }">
+            {{value}}<v-img width="100px" :src="'/'+value"/>
+        </template>
         <template #item.religion="{ value }">
-            {{ value.name }}
+            {{ value?value.name:'' }}
         </template>
         <template #item.family="{ value }">
-            {{ value.name }}
+            {{ value?value.name:'' }}
+        </template>
+        <template #item.guild="{ value }">
+            {{ value?value.name:'' }}
+        </template>
+        <template #item.kingdom="{ value }">
+            {{ value?value.name:'' }}
+        </template>
+        <template #item.beds="{ value }">
+            <v-autocomplete
+                :items="value"
+                item-title="address"
+            ></v-autocomplete>
+        </template>
+        <template #item.room="{ value }">
+            {{ value?value.address:'' }}
         </template>
         <template #item.actions="{ item }">
             <v-icon
@@ -142,29 +158,7 @@ export default defineComponent({
             if (this.options[this.$route.params.name] !== undefined && this.options[this.$route.params.name].length > 0) {
                 let data = this.options[this.$route.params.name][0];
                 for (const property in data) {
-                    if (property === 'attribute_values') {
-                        data[property].forEach((gav) => {
-                                headers.push(
-                                    {
-                                        title: gav.attribute.name,
-                                        align: 'left',
-                                        sortable: true,
-                                        type: 'text',
-                                        key: gav.attribute.name,
-                                    }
-                                )
-                            }
-                        );
-                    } else if (property === 'user_type') {
-                        headers.push(
-                            {
-                                title: property,
-                                align: 'left',
-                                sortable: true,
-                                type: 'text',
-                            }
-                        )
-                    } else {
+                    if (!property.includes('_id')) {
                         headers.push(
                             {
                                 title: property,

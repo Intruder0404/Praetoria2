@@ -6,9 +6,11 @@
 
 namespace App\Models\Guild;
 
+use App\Models\Kingdom\Kingdom;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 
 /**
  * Class Guild
@@ -16,6 +18,8 @@ use Illuminate\Database\Eloquent\Model;
  * @property int $id
  * @property string $name
  * @property boolean $isActive
+ * @property string $description
+ * @property string $kingdom_id
  * @property Carbon|null $created_at
  * @property Carbon|null $updated_at
  *
@@ -27,7 +31,9 @@ class Guild extends Model
 
 	protected $fillable = [
 		'name',
-        'isActive'
+        'isActive',
+        'description',
+        'kingdom_id'
 	];
 
     /**
@@ -38,4 +44,8 @@ class Guild extends Model
     protected $casts = [
         'isActive' => 'boolean',
     ];
+    public function kingdom(): HasOne
+    {
+        return $this->hasOne(Kingdom::class,'id','kingdom_id');
+    }
 }
