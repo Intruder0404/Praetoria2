@@ -14,9 +14,6 @@
                             label="Name"
                             required
                         ></v-text-field>
-                        <div v-else>
-                            {{ family.name }}
-                        </div>
                     </v-col>
                     <v-col cols="12" sm="6" md="6">
                         <v-checkbox
@@ -24,10 +21,10 @@
                             label="Active"
                         ></v-checkbox>
                     </v-col>
-                    <v-col cols="12" sm="6" md="6">
-
+                    <div class="v-col-6">
                         <v-select class="d-flex justify-center" variant="outlined"
                                   v-model="guild.logo" :items="options.logos"
+                                  item-value="url"
                                   label="Logo">
                             <template #item="{ props,item }">
                                 <v-list-item v-bind="props" title="">
@@ -38,15 +35,7 @@
                                 <v-img width="100px" :src="'/'+item.value"/>
                             </template>
                         </v-select>
-                        <v-img v-else width="100px" :src="'/'+family.logo"/>
-                    </v-col>
-<!--                    <v-col cols="12" sm="6" md="6">
-                        <v-text-field
-
-                            v-model="guild.animal"
-                            label="Animal"
-                        ></v-text-field>
-                    </v-col>-->
+                    </div>
                     <v-col cols="12" sm="6" md="6">
                         <v-select class="d-flex justify-center" variant="outlined"
                                   v-model="guild.kingdom_id" :items="options.kingdoms"
@@ -54,16 +43,6 @@
                                   item-value="id"
                                   label="Kingdom">
                         </v-select>
-                        <v-select class="d-flex justify-center" variant="outlined"
-                                  v-else-if="user.characters.find(c => c.isActive).family.pater_familia.id === user.id"
-                                  v-model="modifiedFamily.pater_familia.id" :items="options.characters"
-                                  item-title="name"
-                                  item-value="id"
-                                  label="Pater Familia">
-                        </v-select>
-                        <div v-else>
-                                {{modifiedFamily.pater_familia?modifiedFamily.pater_familia:''}}
-                        </div>
                     </v-col>
                     <v-col cols="12">
                         <v-textarea
@@ -71,34 +50,8 @@
                             v-model="guild.description"
                             label="Description"
                         ></v-textarea>
-                        <div>
-                            {{family.description}}
-                        </div>
                     </v-col>
                 </v-row>
-
-<!--                <v-data-table
-                    :items="options.characters.filter(c=>c.family.id === guild.id)"
-                >
-                    <template #item.rank="{ value }">
-                        {{ value.name }}
-                    </template>
-                    <template #item.family="{ value }">
-                        {{ value.name }}
-                    </template>
-                    <template #item.religion="{ value }">
-                        {{ value.name }}
-                    </template>
-                    <template #item.action="{ value }">
-                        <v-icon
-                            size="small"
-                            class="me-2"
-                            @click="editItem(item)"
-                        >
-                            mdi-arrow-up-drop-circle-outline
-                        </v-icon>
-                    </template>
-                </v-data-table>-->
 
                 <v-card-actions>
                     <v-btn class="v-col-6" variant="flat" color="success" @click="updateGuild">Change</v-btn>
@@ -131,8 +84,7 @@ export default {
     data() {
         return {
             valid: true,
-            loading: false,
-            modifiedFamily:_.cloneDeep(this.family)
+            loading: false
         };
     },
     computed: {
