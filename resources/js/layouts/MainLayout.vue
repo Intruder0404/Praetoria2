@@ -34,7 +34,7 @@ export default {
     },
     mounted() {
         this.fetchAll();
-        this.$root.vtoast = this.$refs.vtoast
+        this.$root.vtoast = this.$refs.vtoast;
     },
     computed: {
         ...mapState(authStore, ["getUser", 'isAuthenticated', 'isAuthLoading']),

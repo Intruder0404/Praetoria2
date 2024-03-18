@@ -3,7 +3,7 @@ import {createRouter, createWebHistory, RouteRecordRaw} from 'vue-router'
 import {UserNavigator, AppBar, Footer} from "@/components";
 import {authStore} from "@/store/auth";
 
-const routes: Array<RouteRecordRaw> = [
+const routes: RouteRecordRaw[] = [
     {
         path: '/',
         name: 'home',

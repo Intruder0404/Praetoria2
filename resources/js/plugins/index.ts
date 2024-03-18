@@ -20,11 +20,11 @@ import type { App } from 'vue'
 import i18n from './i18n'
 
 export function registerPlugins (app: App) {
-  loadFonts()
+  loadFonts();
   app
     .use(ToastPlugin)
     .use(vuetify)
     .use(router)
     .use(pinia)
-    .use(i18n)
+    .use(i18n);
 }
