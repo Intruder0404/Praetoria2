@@ -146,6 +146,7 @@ export default {
         ...mapActions(optionsStore, {fetchAll: 'fetchAll'}),
         ...mapActions(familyStore, {update: 'update'}),
         updateFamily() {
+            console.log(this.family);
             this.update(this.family)
                 .then(this.fetchAll().then(() => {
                     this.$root.vtoast.color = 'success'
